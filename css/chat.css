@@ -117,7 +117,7 @@ main .chat-profile-wrapper .details {padding: 15px; font-size: 14px;}
     main .chat-box-wrapper {width: 0%; display: none;}
     main .chat-box-wrapper-show {width: 100%; display: block;}
     main .chat-box-wrapper .text-field {min-width: 100%;}
-    main .chat-box-wrapper .topBar button.chat-back {display: block;}
+    main .chat-box-wrapper .topBar .left-content button.chat-back {display: block;}
     main .chat-profile-wrapper {width: 100%;}
 
 }
