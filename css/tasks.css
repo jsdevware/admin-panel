@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@100;200;300;400;500;600;700&family=Cute+Font&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300;400;500;600;700&family=Splash&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+* {margin: 0; padding: 0; box-sizing: border-box;}
+body {background:#f3f3f9; font-family: 'Quicksand', sans-serif;}
+a {text-decoration: none;}
+ul {list-style: none; padding: 0; margin: 0;}
+::-webkit-scrollbar {height: 5px; width: 5px;}
+::-webkit-scrollbar-track {background: #f2f2f2; border-radius: 10px;}
+::-webkit-scrollbar-thumb {background: #ddd; border-radius: 10px;}
+    ::-webkit-scrollbar-thumb:hover {background: pink;}
+button {background: none; border: none;}
+p {font-weight: 500; letter-spacing: 1px;}
+hr {color: #ddd;}
+.page-title {background: #fff; padding: 10px 0; text-align: center;}
+.page-title h6 {display: inline-block; font-weight: bold; position: relative;}
+.page-title h6:before {content: "";  position: absolute;  height: 5px;  width: 20px;   background: hotpink; right: 110%;  top: 50%;  transform: translateY(-50%);  border-radius: 5px;}
+.page-title h6:after {content: "";  position: absolute;  height: 5px;  width: 20px;   background: hotpink; left: 110%;  top: 50%;  transform: translateY(-50%);  border-radius: 5px;}
+
+            /* codes for page zooming */
+.pageZoomOut {display: none;}
+:fullscreen .pageZoomIn {display: none;}
+:fullscreen .pageZoomOut {display: block;}
+/* for safari */
+:-webkit-full-screen .pageZoomIn {display: none;}
+:-webkit-full-screen .pageZoomOut {display: block;}
+/* for edge */
+:-ms-fullscreen .pageZoomIn {display: none;}
+:-ms-fullscreen .pageZoomOut {display: block;}
+
+                /* logout alert styling start from here */
+.logout-alert {background: #fff; display: inline-block; position: fixed; top: 30%; left: 50%; transform: translateX(-50%); padding: 20px; text-align: center; border: 1px solid hotpink; border-radius: 5px; display: none; transform-origin: center; transition: 0.5s; z-index: 11;}
+.logout-alert-show {display: block;}
+                /* logout alert styling end here */
+
+                /* preloader styling start from here */
+#preloader {position: fixed; z-index: 1000; overflow: hidden; background: #f4f9ff; width: 100vw; height: 100vh; top: 0; left: 0; animation: preloader 0s 2s forwards;}
+@keyframes preloader {
+    100% {transform: scale(0);}
+}
+#preloader img {position: absolute; width: 20%; left: 40%; top: 50%; transform: translateY(-50%);}              
+                /* preloader styling end here */
+
+                /* menu section styling start from here */
+.menuBar {width: 15%; background: rgb(4, 46, 80); height: 100vh; float: left; overflow: scroll; padding: 10px; position: fixed; z-index: 10;}
+.menuBar::-webkit-scrollbar {height: 0;}
+.menuBarHide {display: none;}
+.menuBar ul li {padding: 10px;}
+.menuBar ul li a, .menuBar ul li button  {color: #f2f2f2; font-weight: bold;}
+.menuBar ul li a:hover, .menuBar ul li button:hover {color: #ffb3cd;}
+.menuBar ul li a.active {color: #ffb3cd;}
+.menuBar .menuCloseBtn {color: hotpink; float: right; display: none;}
+                /* menu section styling start from here */
+
+.bodyContent {width: 85%; float: right; position: relative;}
+.bodyContentHide {width: 100%;}
+
+                /* header section styling start from here */
+header {background: #fff; position: sticky; top: 0; left: 0; z-index: 9; box-shadow: 0px 1px 5px #ddd; padding: 10px 0;}
+header .icon {width: 36px; height: 36px; padding: 5px; border-radius: 50%; text-align: center; cursor: pointer; font-size: 18px; position: relative;}
+    header .icon:hover {background: #f3f3f9; color: #00f;}
+header ul {display: inline-block;}
+header ul:last-child {float: right;}
+header ul li {display: inline-block; padding: 15px;}
+header button.menuBtn {font-size: 25px; transition: all 1s; color: #333;}
+header button.menuBtn:hover {transform: rotateX(180deg); color: hotpink;}
+header button.menuShowBtn {display: none;}
+header form.mainSearch .item {background: #f3f3f9; padding: 10px 15px; border-radius: 5%;}
+header form.mainSearch .item input {border: none; background: none;}
+header form.mainSearch .item input:focus {outline: none;}
+header .searchBar .searchBox {position: absolute; background: #fff; top: 100%; left: 0; width: 100%; padding: 15px; text-align: center; box-shadow: 0px 1px 5px #ddd; transform-origin: top; transition: all 0.5s; transform: scale(0); z-index: 10;}
+header .searchBar .searchBoxShow {transform: scale(1);}
+header .searchBar .searchBox .box {background: #f3f3f9; padding: 15px;}
+header .searchBar .searchBox .box i {width: 10%; float: left;}
+header .searchBar .searchBox .box input {border: none; background: none; width: 90%;}
+header .searchBar .searchBox .box input:focus {outline: none;}
+header .searchBar .icon {display: none;}
+    /* cart wrapper*/
+header .cart-wrapper .icon span {position: absolute; top: 0; right: 0; width: 20px; height: 20px; font-size: 12px; padding: 2px; background: lightgreen; border-radius: 50%;}
+header .cart-wrapper .cart-box {position: absolute; background: #fff; top: 100%; right: 0; width: 315px; height: 400px; box-shadow: 0px 0px 10px #ddd; transform-origin: top right; transition: all 0.5s; transform: scale(0); overflow: hidden;}
+header .cart-wrapper .cart-box .bottomBar {border-top: 1px solid #f2f2f2; padding: 10px; position: fixed; width: 100%; height: 100px; bottom: 0;}
+header .cart-wrapper .cart-box .topBar {height: 60px; border-bottom: 1px solid #f2f2f2;}
+header .cart-wrapper .cart-box .bottomBar a {background: hotpink; color: #333; font-weight: bold; letter-spacing: 1px; border-radius: 5px; display: block; text-align: center; padding: 8px; }
+header .cart-wrapper .cart-box .bottomBar a:hover {opacity: 0.9;}
+header .cart-wrapper .cart-box .item-wrapper {position: fixed; overflow: scroll; height: 240px; top: 60px;}
+header .cart-wrapper .cart-box .item-wrapper .single-item {width: 315px;}
+header .cart-wrapper .cart-box .item-wrapper .single-item-hide {display: none;}
+header .cart-wrapper .cart-box .item-wrapper .single-item:hover {background: #f3f3f9;}
+header .cart-wrapper .cart-box .item-wrapper .single-item ul {float: none;}
+header .cart-wrapper .cart-box .item-wrapper .single-item ul li {display: inline-block;}
+header .cart-wrapper .cart-box .item-wrapper .single-item ul li img {width: 30px; height: 30px; padding: 5px; background: #f3f3f9; border-radius: 50%; margin-top: -20px;}
+header .cart-wrapper .cart-box .item-wrapper .single-item ul li a {font-size: 13px; font-weight: bold; color: #333;}
+    header .cart-wrapper .cart-box .item-wrapper .single-item ul li a:hover {text-decoration: underline;}
+header .cart-wrapper .cart-box .item-wrapper .single-item ul li span {font-size: 11px;}
+header .cart-wrapper .cart-box .item-wrapper .single-item ul li i:hover {cursor: pointer; color: red;}
+header .cart-wrapper .cart-box-show {transform: scale(1);}
+    /* notification wrapper */
+header .notification-wrapper .icon span {position: absolute; top: 0; right: 0; width: 20px; height: 20px; font-size: 12px; padding: 2px; background: rgb(255, 215, 156); border-radius: 50%;}
+header .notification-wrapper .notification-box {position: absolute; background: #fff; top: 100%; right: 0; width: 315px; height: 400px; box-shadow: 0px 0px 10px #ddd; transform-origin: top right; transition: all 0.5s; transform: scale(0); overflow: hidden;}
+header .notification-wrapper .notification-box-show {transform: scale(1);}
+header .notification-wrapper .notification-box .topBar {background: hotpink; height: 100px;}
+header .notification-wrapper .notification-box .topBar ul.tabs{padding: 0px 10px;}
+header .notification-wrapper .notification-box .topBar ul.tabs li{color: #f2f2f2; display: inline-block; padding: 5px 10px; cursor: pointer; font-weight: bold;}
+header .notification-wrapper .notification-box .topBar ul.tabs li.current{background: #f2f2f2; color: #444;}
+header .notification-wrapper .notification-box .main {height: 300px; overflow: scroll; padding: 10px;}
+header .notification-wrapper .notification-box .main .tab-content{display: none;}
+header .notification-wrapper .notification-box .main .tab-content.current{display: inherit;}
+header .notification-wrapper .notification-box .main .item ul {padding: 10px 0;}
+header .notification-wrapper .notification-box .main .item ul.bg-changed {background: #f3f3f9;}
+header .notification-wrapper .notification-box .main .item ul:hover {background: #f3f3f9;}
+header .notification-wrapper .notification-box .main .item ul li {display: inline;}
+header .notification-wrapper .notification-box .main .item ul li img {border-radius: 50%; width: 30px;}
+header .notification-wrapper .notification-box .main .item ul li a {font-size: 13px; font-weight: bold; color: #333;}
+    header .notification-wrapper .notification-box .main .item ul li a:hover {text-decoration: underline;}
+header .notification-wrapper .notification-box .main .item ul li span {font-size: 11px;}
+header .notification-wrapper .notification-box .main .item ul li:first-child {float: left;}
+header .notification-wrapper .notification-box .main .item ul li:last-child {float: right; margin-top: -40px;}
+    /* profile wrapper */
+header .profile-wrapper {background: #f3f3f9; padding: 10px; margin-top: -8px;}
+header .profile-wrapper .button {cursor: pointer; padding: 5px;}
+header .profile-wrapper .button img {width: 35px; border-radius: 50%;}
+header .profile-wrapper .button .name {float: right; padding: 0px 15px;}
+header .profile-wrapper .profile-box-show {transform: scale(1) !important;}
+header .profile-wrapper .profile-box {position: absolute; background: #fff; top: 100%; right: 0; width: 180px; box-shadow: 0px 0px 10px #ddd; transform-origin: top right; transition: all 0.5s; transform: scale(0); padding: 10px 0; font-size: 14px;}
+header .profile-wrapper .profile-box ul {float: none;}
+header .profile-wrapper .profile-box ul li {padding: 5px 20px; display: block; width: 180px;}
+header .profile-wrapper .profile-box ul li a, header .profile-wrapper .profile-box ul li button {color: #333; font-weight: 600; display: block;}
+header .profile-wrapper .profile-box ul li:hover {background: #f3f3f9;}
+                /* header section styling end here */
+
+                /* codes for main section start from here */
+main .topBar {background: #fff; margin: 30px 0; padding: 20px; display: flex; justify-content: space-between; box-shadow: 0px 0px 5px #ddd; border-radius: 10px; flex-wrap: wrap;}
+main .topBar button {background: honeydew; padding: 10px 20px; box-shadow: 0px 0px 5px #ddd; font-weight: bold;}
+main .topBar button:hover {box-shadow: inset 0px 0px 5px #ddd;}
+main .topBar ul.search-wrapper {background: honeydew; box-shadow: inset 0px 0px 5px #ddd; padding: 5px;}
+main .topBar ul.search-wrapper li {padding: 5px; float: left;}
+main .topBar ul.search-wrapper li:first-child {width: 10%;}
+main .topBar ul.search-wrapper li:last-child {width: 90%;}
+main .topBar ul.search-wrapper li input {width: 100%; border: none; background: none;}
+main .topBar ul.search-wrapper li input:focus {outline: none;}
+/* codes for task items */
+main .task-item-wrapper { padding: 10px 0; overflow-x: scroll; display: flex;}
+main .task-item-wrapper .task-item {min-width: 310px; padding: 10px; display: inline-block;}
+main .task-item-wrapper .task-item select {border: none; background: none; color: #999; font-size: 13px; font-weight: 500;}
+main .task-item-wrapper .task-item select:focus {outline: none;}
+main .task-item-wrapper .task-item .card {font-size: 13px; border: none;}
+main .task-item-wrapper .task-item .card.delete {display: none;}
+main .task-item-wrapper .task-item .card ul.delete-confirm {color: #333; background: #fff; border: 1px solid #ddd; position: absolute; top: 25px; right: 0; border-radius: 5px; cursor: pointer; transform-origin: top right; transform: scale(0); transition: all 0.3s;}
+main .task-item-wrapper .task-item .card ul.delete-confirm-show {transform: scale(1);}
+main .task-item-wrapper .task-item .card ul li {padding: 5px;}
+main .task-item-wrapper .task-item .card ul li:hover {background: #f3f3f9;}
+main .task-item-wrapper .task-item button.add-task {background: honeydew; width: 100%; padding: 10px; font-weight: 600; box-shadow: 0px 0px 5px #999;}
+main .task-item-wrapper .task-item button.add-task:hover {box-shadow: inset 0px 0px 5px #999;}
+                /* codes for main section end here */
+
+                /* codes for footer start from here */
+footer {background: #fff; padding: 20px 0; box-shadow: 0px -2px 5px #ddd;}
+footer a {color: hotpink;}
+                /* codes for footer end here */
+
+/* new board adding*/
+.new-board-wrapper {position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.5); z-index: 10; transform: scale(0); transform-origin: center; transition: all 0.3s;}
+.new-board-show {transform: scale(1);}
+.new-board-wrapper .new-board {background: #fff; box-shadow: 0px 0px 5px #ddd; width: 40%; position: fixed; left: 30%; top: 50%; transform: translateY(-50%);}
+.new-board-wrapper .new-board h6 {background: #ffb3cd; padding: 15px;}
+.new-board-wrapper .new-board .body {padding: 15px;}
+.new-board-wrapper .new-board .body label {font-size: 14px;}
+.new-board-wrapper .new-board .body input {width: 100%; border: 1px solid #ddd; padding: 8px;}
+.new-board-wrapper .new-board .body input:focus {outline-color: honeydew;}
+.new-board-wrapper .new-board .body button {margin: 30px 5px; font-size: 15px; font-weight: 500; padding: 5px 15px; box-shadow: 2px 2px 5px #ddd;}
+.new-board-wrapper .new-board .body button:hover {box-shadow: -2px -2px 5px #ddd;}
+.new-board-wrapper .new-board .body button:first-child {background: #f3f3f3;}
+.new-board-wrapper .new-board .body button:last-child {background: honeydew;}
+
+/* new task adding*/
+.new-task-wrapper {position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.5); z-index: 10; transform: scale(0); transform-origin: center; transition: all 0.3s;}
+.new-task-show {transform: scale(1);}
+.new-task-wrapper .new-task {background: #fff; box-shadow: 0px 0px 5px #ddd; width: 60%; position: absolute; left: 20%; top: 50%; transform: translateY(-50%);}
+.new-task-wrapper .new-task h6 {background: #ffb3cd; padding: 15px;}
+.new-task-wrapper .new-task .body {padding: 15px;}
+.new-task-wrapper .new-task .body label {font-size: 14px; line-height: 30px;}
+.new-task-wrapper .new-task .body input, textarea {width: 100%; border: 1px solid transparent; background: #f3f3f9; padding: 8px;}
+.new-task-wrapper .new-task .body input:focus, textarea:focus {outline-color: rgb(240, 239, 239);}
+.new-task-wrapper .new-task .body button {margin: 30px 5px; font-size: 15px; font-weight: 500; padding: 5px 15px; box-shadow: 2px 2px 5px #ddd;}
+.new-task-wrapper .new-task .body button:hover {box-shadow: -2px -2px 5px #ddd;}
+.new-task-wrapper .new-task .body button:first-child {background: #f3f3f3;}
+.new-task-wrapper .new-task .body button:last-child {background: honeydew;}
+
+                /* codes for media query start from here */
+/* responsive for tab */
+@media screen and (max-width: 768px){
+
+    .menuBar {display: none;}
+    .menuBarShow {display: block; width: 25%;}
+    .bodyContent {width: 100%;}
+    header button.menuShowBtn {display: block;}
+    header button.menuHideBtn {display: none;}
+    .menuBar .menuCloseBtn {display: block;}
+    header .profile-wrapper {background: none;}
+    header .profile-wrapper .name {display: none;}
+    .new-board-wrapper .new-board {width: 50%; left: 25%;}
+    .new-task-wrapper .new-task {width: 80%; left: 10%;}
+
+}
+
+/* responsive for mobile */
+@media screen and (max-width: 425px){
+
+    .logout-alert {width: 90%;}
+    .menuBarShow {width: 60%;}
+    header .searchBar .icon {display: block;}
+    header form.mainSearch { display: none;}
+    header .profile-wrapper img {width: 30px;}
+    header ul li {padding: 5px 2px;}
+    header .cart-wrapper .cart-box {right: -358%; transform-origin: top;}
+    header .notification-wrapper .notification-box {right: -235%; transform-origin: top;}
+    #preloader img {width: 50%; left: 25%;}
+    main .banner .content a {font-size: 12px;}
+    main .topBar button, main .topBar ul {width: 100%; margin: 5px 0;}
+    .new-board-wrapper .new-board {width: 94%; left: 3%;}
+    .new-task-wrapper .new-task {width: 94%; left: 3%; overflow-y: scroll; height: 90%;}
+
+}
+                /* codes for media query end here */

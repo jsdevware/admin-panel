@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@100;200;300;400;500;600;700&family=Cute+Font&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300;400;500;600;700&family=Splash&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+* {margin: 0; padding: 0; box-sizing: border-box;}
+body {background:#f3f3f9; font-family: 'Quicksand', sans-serif;}
+a {text-decoration: none;}
+ul {list-style: none; padding: 0; margin: 0;}
+::-webkit-scrollbar {height: 5px; width: 5px;}
+::-webkit-scrollbar-track {background: #f2f2f2; border-radius: 10px;}
+::-webkit-scrollbar-thumb {background: #ddd; border-radius: 10px;}
+    ::-webkit-scrollbar-thumb:hover {background: pink;}
+button {background: none; border: none;}
+p {font-weight: 500; letter-spacing: 1px;}
+hr {color: #ddd;}
+.page-title {background: #fff; padding: 10px 0; text-align: center;}
+.page-title h6 {display: inline-block; font-weight: bold; position: relative;}
+.page-title h6:before {content: "";  position: absolute;  height: 5px;  width: 20px;   background: hotpink; right: 110%;  top: 50%;  transform: translateY(-50%);  border-radius: 5px;}
+.page-title h6:after {content: "";  position: absolute;  height: 5px;  width: 20px;   background: hotpink; left: 110%;  top: 50%;  transform: translateY(-50%);  border-radius: 5px;}
+
+            /* codes for page zooming */
+.pageZoomOut {display: none;}
+:fullscreen .pageZoomIn {display: none;}
+:fullscreen .pageZoomOut {display: block;}
+/* for safari */
+:-webkit-full-screen .pageZoomIn {display: none;}
+:-webkit-full-screen .pageZoomOut {display: block;}
+/* for edge */
+:-ms-fullscreen .pageZoomIn {display: none;}
+:-ms-fullscreen .pageZoomOut {display: block;}
+
+                /* logout alert styling start from here */
+.logout-alert {background: #fff; display: inline-block; position: fixed; top: 30%; left: 50%; transform: translateX(-50%); padding: 20px; text-align: center; border: 1px solid hotpink; border-radius: 5px; display: none; transform-origin: center; transition: 0.5s; z-index: 11;}
+.logout-alert-show {display: block;}
+                /* logout alert styling end here */
+
+                /* preloader styling start from here */
+#preloader {position: fixed; z-index: 1000; overflow: hidden; background: #f4f9ff; width: 100vw; height: 100vh; top: 0; left: 0; animation: preloader 0s 2s forwards;}
+@keyframes preloader {
+    100% {transform: scale(0);}
+}
+#preloader img {position: absolute; width: 20%; left: 40%; top: 50%; transform: translateY(-50%);}              
+                /* preloader styling end here */
+
+                /* menu section styling start from here */
+.menuBar {width: 15%; background: rgb(4, 46, 80); height: 100vh; float: left; overflow: scroll; padding: 10px; position: fixed; z-index: 10;}
+.menuBar::-webkit-scrollbar {height: 0;}
+.menuBarHide {display: none;}
+.menuBar ul li {padding: 10px;}
+.menuBar ul li a, .menuBar ul li button  {color: #f2f2f2; font-weight: bold;}
+.menuBar ul li a:hover, .menuBar ul li button:hover {color: #ffb3cd;}
+.menuBar ul li a.active {color: #ffb3cd;}
+.menuBar .menuCloseBtn {color: hotpink; float: right; display: none;}
+                /* menu section styling start from here */
+
+.bodyContent {width: 85%; float: right; position: relative;}
+.bodyContentHide {width: 100%;}
+
+                /* header section styling start from here */
+header {background: #fff; position: sticky; top: 0; left: 0; z-index: 9; box-shadow: 0px 1px 5px #ddd; padding: 10px 0;}
+header .icon {width: 36px; height: 36px; padding: 5px; border-radius: 50%; text-align: center; cursor: pointer; font-size: 18px; position: relative;}
+    header .icon:hover {background: #f3f3f9; color: #00f;}
+header ul {display: inline-block;}
+header ul:last-child {float: right;}
+header ul li {display: inline-block; padding: 15px;}
+header button.menuBtn {font-size: 25px; transition: all 1s; color: #333;}
+header button.menuBtn:hover {transform: rotateX(180deg); color: hotpink;}
+header button.menuShowBtn {display: none;}
+header form.mainSearch .item {background: #f3f3f9; padding: 10px 15px; border-radius: 5%;}
+header form.mainSearch .item input {border: none; background: none;}
+header form.mainSearch .item input:focus {outline: none;}
+header .searchBar .searchBox {position: absolute; background: #fff; top: 100%; left: 0; width: 100%; padding: 15px; text-align: center; box-shadow: 0px 1px 5px #ddd; transform-origin: top; transition: all 0.5s; transform: scale(0); z-index: 10;}
+header .searchBar .searchBoxShow {transform: scale(1);}
+header .searchBar .searchBox .box {background: #f3f3f9; padding: 15px;}
+header .searchBar .searchBox .box i {width: 10%; float: left;}
+header .searchBar .searchBox .box input {border: none; background: none; width: 90%;}
+header .searchBar .searchBox .box input:focus {outline: none;}
+header .searchBar .icon {display: none;}
+    /* cart wrapper*/
+header .cart-wrapper .icon span {position: absolute; top: 0; right: 0; width: 20px; height: 20px; font-size: 12px; padding: 2px; background: lightgreen; border-radius: 50%;}
+header .cart-wrapper .cart-box {position: absolute; background: #fff; top: 100%; right: 0; width: 315px; height: 400px; box-shadow: 0px 0px 10px #ddd; transform-origin: top right; transition: all 0.5s; transform: scale(0); overflow: hidden;}
+header .cart-wrapper .cart-box .bottomBar {border-top: 1px solid #f2f2f2; padding: 10px; position: fixed; width: 100%; height: 100px; bottom: 0;}
+header .cart-wrapper .cart-box .topBar {height: 60px; border-bottom: 1px solid #f2f2f2;}
+header .cart-wrapper .cart-box .bottomBar a {background: hotpink; color: #333; font-weight: bold; letter-spacing: 1px; border-radius: 5px; display: block; text-align: center; padding: 8px; }
+header .cart-wrapper .cart-box .bottomBar a:hover {opacity: 0.9;}
+header .cart-wrapper .cart-box .item-wrapper {position: fixed; overflow: scroll; height: 240px; top: 60px;}
+header .cart-wrapper .cart-box .item-wrapper .single-item {width: 315px;}
+header .cart-wrapper .cart-box .item-wrapper .single-item-hide {display: none;}
+header .cart-wrapper .cart-box .item-wrapper .single-item:hover {background: #f3f3f9;}
+header .cart-wrapper .cart-box .item-wrapper .single-item ul {float: none;}
+header .cart-wrapper .cart-box .item-wrapper .single-item ul li {display: inline-block;}
+header .cart-wrapper .cart-box .item-wrapper .single-item ul li img {width: 30px; height: 30px; padding: 5px; background: #f3f3f9; border-radius: 50%; margin-top: -20px;}
+header .cart-wrapper .cart-box .item-wrapper .single-item ul li a {font-size: 13px; font-weight: bold; color: #333;}
+    header .cart-wrapper .cart-box .item-wrapper .single-item ul li a:hover {text-decoration: underline;}
+header .cart-wrapper .cart-box .item-wrapper .single-item ul li span {font-size: 11px;}
+header .cart-wrapper .cart-box .item-wrapper .single-item ul li i:hover {cursor: pointer; color: red;}
+header .cart-wrapper .cart-box-show {transform: scale(1);}
+    /* notification wrapper */
+header .notification-wrapper .icon span {position: absolute; top: 0; right: 0; width: 20px; height: 20px; font-size: 12px; padding: 2px; background: rgb(255, 215, 156); border-radius: 50%;}
+header .notification-wrapper .notification-box {position: absolute; background: #fff; top: 100%; right: 0; width: 315px; height: 400px; box-shadow: 0px 0px 10px #ddd; transform-origin: top right; transition: all 0.5s; transform: scale(0); overflow: hidden;}
+header .notification-wrapper .notification-box-show {transform: scale(1);}
+header .notification-wrapper .notification-box .topBar {background: hotpink; height: 100px;}
+header .notification-wrapper .notification-box .topBar ul.tabs{padding: 0px 10px;}
+header .notification-wrapper .notification-box .topBar ul.tabs li{color: #f2f2f2; display: inline-block; padding: 5px 10px; cursor: pointer; font-weight: bold;}
+header .notification-wrapper .notification-box .topBar ul.tabs li.current{background: #f2f2f2; color: #444;}
+header .notification-wrapper .notification-box .main {height: 300px; overflow: scroll; padding: 10px;}
+header .notification-wrapper .notification-box .main .tab-content{display: none;}
+header .notification-wrapper .notification-box .main .tab-content.current{display: inherit;}
+header .notification-wrapper .notification-box .main .item ul {padding: 10px 0;}
+header .notification-wrapper .notification-box .main .item ul.bg-changed {background: #f3f3f9;}
+header .notification-wrapper .notification-box .main .item ul:hover {background: #f3f3f9;}
+header .notification-wrapper .notification-box .main .item ul li {display: inline;}
+header .notification-wrapper .notification-box .main .item ul li img {border-radius: 50%; width: 30px;}
+header .notification-wrapper .notification-box .main .item ul li a {font-size: 13px; font-weight: bold; color: #333;}
+    header .notification-wrapper .notification-box .main .item ul li a:hover {text-decoration: underline;}
+header .notification-wrapper .notification-box .main .item ul li span {font-size: 11px;}
+header .notification-wrapper .notification-box .main .item ul li:first-child {float: left;}
+header .notification-wrapper .notification-box .main .item ul li:last-child {float: right; margin-top: -40px;}
+    /* profile wrapper */
+header .profile-wrapper {background: #f3f3f9; padding: 10px; margin-top: -8px;}
+header .profile-wrapper .button {cursor: pointer; padding: 5px;}
+header .profile-wrapper .button img {width: 35px; border-radius: 50%;}
+header .profile-wrapper .button .name {float: right; padding: 0px 15px;}
+header .profile-wrapper .profile-box-show {transform: scale(1) !important;}
+header .profile-wrapper .profile-box {position: absolute; background: #fff; top: 100%; right: 0; width: 180px; box-shadow: 0px 0px 10px #ddd; transform-origin: top right; transition: all 0.5s; transform: scale(0); padding: 10px 0; font-size: 14px;}
+header .profile-wrapper .profile-box ul {float: none;}
+header .profile-wrapper .profile-box ul li {padding: 5px 20px; display: block; width: 180px;}
+header .profile-wrapper .profile-box ul li a, header .profile-wrapper .profile-box ul li button {color: #333; font-weight: 600; display: block;}
+header .profile-wrapper .profile-box ul li:hover {background: #f3f3f9;}
+                /* header section styling end here */
+
+                /* codes for main section start from here */
+/* main banner */
+main .banner {color: #fff; background: linear-gradient(#34426Ece, #34416ece), url(../img/profile-banner.jpg); background-repeat: no-repeat; background-size: cover; background-position: center; padding: 30px 0 100px 0;}
+main .banner ul.left-item {display: flex;}
+main .banner ul.left-item li img {border-radius: 50%; width: 100px; padding-right: 20px;}
+main .banner ul.right-item {display: flex; justify-content: end;}
+main .banner ul.right-item li {padding: 15px; text-align: center;}
+main .banner a.setting-icon {font-size: 20px; color: #fff; float: right; background: #00000040; padding: 5px 10px; border-radius: 5px; font-weight: 600; transition: all 0.5s;}
+main .banner a.setting-icon:hover {padding: 5px 20px;}
+main .banner a.setting-icon i {display: inline-block; animation: setting-icon linear 2.5s infinite;}
+    @keyframes setting-icon {0%   {transform: rotateZ(0deg);}  100%   {transform: rotateZ(360deg);}}
+/* main tab link */
+main ul.main-tab-link {display: flex; flex-wrap: wrap; color: #fff; font-weight: bold; padding: 10px 0; margin-top: -100px; margin-bottom: 10px;}
+main ul.main-tab-link li {padding: 5px 20px; cursor: pointer; border-radius: 5px; transition: all 0.3s; text-align: center;}
+main ul.main-tab-link li:hover, main ul.main-tab-link li.active {background: #f3f3f949;}
+main .tab-desc {display: none;}
+main .tab-desc.active {display: inherit;}
+
+/* main overview tab */
+main #overview {margin-bottom: 30px;}
+main #overview .card {border: none; border: 1px solid #fff; background: #f3f3f9; overflow: hidden;}
+/* progress */
+main #overview .progress {padding: 2px; margin-top: 40px; position: relative; overflow: visible; border-radius: 10px; background: hotpink;}
+main #overview .progress::before {content: "30%"; position: absolute; left: 25%; top: -30px; background: rgb(191, 238, 241); font-weight: 500; padding: 2px 5px; border-radius: 3px 3px 3px 3px; z-index: 1;}
+main #overview .progress::after {content: ""; position: absolute; left: 25%; top: -17px; background: linear-gradient(to right, transparent 50%, rgb(191, 238, 241) 50%); width: 10px; height: 10px; transform: rotate(45deg);}
+main #overview .progress .range {background: rgb(191, 238, 241); width: 30%; border-radius: 10px; position: relative;}
+main #overview .progress .range::before {content: ""; width: 7px; height: 7px; background: hotpink; position: absolute; border-radius: 50%; right: 3px; top: 50%; transform: translateY(-50%);}
+/* info */
+main #overview .info ul li {line-height: 40px; font-size: 13px; display: flex; justify-content: space-between; font-weight: 500; flex-wrap: wrap;}
+/* portfolio */
+main #overview .portfolio ul {display: flex; justify-content: space-around; margin-top: 20px;}
+main #overview .portfolio ul li {width: 10%;}
+/* skills */
+main #overview .skills ul {margin-top: 15px;}
+main #overview .skills ul li {background: #444; color: #fff; padding: 5px 10px; display: inline-block; margin: 3px; border-radius: 5px; letter-spacing: 1px; font-size: 12px;}
+/* suggestions */
+main #overview .suggestions-hide {display: none;}
+main #overview .suggestions .menu-icon {cursor: pointer;}
+main #overview .suggestions .menu-item {background: #fff; position: absolute; box-shadow: 0px 0px 5px #ddd; top: 100%; right: 100%; transform: scale(0); z-index: 1;}
+main #overview .suggestions .menu-item a {color: #333; font-weight: 600; padding: 5px 10px; display: block;}
+main #overview .suggestions .menu-item a:hover {background: #f3f3f9;}
+main #overview .suggestions .menu-item.show {transform: scale(1);}
+main #overview .suggestions ul {display: flex; margin-top: 10px;}
+main #overview .suggestions ul li {padding: 10px; align-self: center; font-size: 14px;}
+main #overview .suggestions ul li:last-child {position: absolute; right: 10px; padding: 0;}
+main #overview .suggestions ul li:last-child a {color: hotpink; border: 1px solid hotpink; padding: 5px 8px; border-radius: 5px;}
+/* posts */
+main #overview .posts-hide {display: none;}
+main #overview .posts .menu-icon {cursor: pointer;}
+main #overview .posts .menu-item {background: #fff; position: absolute; box-shadow: 0px 0px 5px #ddd; top: 100%; right: 100%; transform: scale(0); z-index: 1;}
+main #overview .posts .menu-item a {color: #333; font-weight: 600; padding: 5px 10px; display: block;}
+main #overview .posts .menu-item a:hover {background: #f3f3f9;}
+main #overview .posts .menu-item.show {transform: scale(1);}
+main #overview .posts ul {display: flex; margin-top: 10px;}
+main #overview .posts ul li {padding: 5px; align-self: center; font-size: 14px;}
+main #overview .posts ul li a {color: #333;}
+main #overview .posts ul li a:hover {opacity: 0.5;}
+main #overview .posts ul li span {font-size: 12px;}
+/* about */
+main #overview .about .content {font-size: 13px;}
+main #overview .about .content ul {display: flex;}
+main #overview .about .content ul li {padding: 8px; align-self: center;}
+main #overview .about .content ul li b {font-weight: 600;}
+main #overview .about .content ul li i {background: #ffb3cd; padding: 5px 6px; border-radius: 50%; text-align: center;}
+/* activities */
+main #overview .activities .content {padding: 25px;}
+main #overview .activities .content .item {border-left: 2px dashed #ddd; font-size: 14px;}
+main #overview .activities .item:last-child {border: none;}
+main #overview .activities ul {display: flex; margin-left: -17px; cursor: pointer;}
+main #overview .activities ul li:last-child {margin-left: 20px;}
+main #overview .activities ul li:last-child p {font-size: 12px; font-weight: 500;}
+main #overview .activities .collapse-content .profile-img {display: flex; margin-bottom: 20px;}
+main #overview .activities .collapse-content .profile-img div {width: 30px; height: 30px; border-radius: 50%; overflow: hidden; text-align: center; font-weight: 500; background: aquamarine; margin-left: -5px;}
+main #overview .activities .collapse-content .profile-img div:nth-child(3) {font-size: 20px;}
+main #overview .activities .collapse-content .profile-img div:last-child {background:rgb(255, 215, 156); font-size: 20px;}
+main #overview .activities .collapse-content {padding-left: 30px; padding-bottom: 15px;}
+main #overview .activities .collapse-content-hide {display: none;}
+main #overview .activities .collapse-content ul {border: 1px dashed #ddd; margin: 0; padding: 10px; cursor: auto;}
+main #overview .activities .collapse-content ul li:first-child {align-self: center; font-size: 20px;}
+
+/* projects */
+main #overview .projects .card {background: #fff; border: none; border-left: 3px solid; box-shadow: 0px 0px 5px #ddd; font-size: 15px;}
+main #overview .projects .card ul.members {display: flex; margin: 10px 0; font-size: 14px;}
+main #overview .projects .card ul.members li:last-child {margin-left: 20px;}
+main #overview .projects .card ul.members li:last-child img {margin-left: -10px;}
+main #overview .projects .card ul.members li:last-child span {margin-left: -10px; background: lightgreen; font-size: 18px; border-radius: 50%; padding: 1px 9px 6px; width: 30px; height: 30px;}
+main #overview .projects button {background: #ffb3cd; font-weight: 500; font-size: 20px; font-family: 'Courier New', Courier, monospace; padding: 5px 20px; border-radius: 5px; transition: all 0.5s;}
+main #overview .projects button:hover {background: rgb(191, 238, 241);}
+
+/* main activities tab */
+main #activities {background: #f3f3f9; border: 1px solid #fff; padding: 20px 10px; border-radius: 4px; margin-bottom: 30px;}
+main #activities .content {margin: 20px 15px;}
+main #activities .content .item {border-left: 2px dashed #ddd;}
+main #activities .content .item:last-child {border: none;}
+main #activities .content ul {display: flex; padding-bottom: 20px; margin-left: -17px;}
+main #activities .content ul li:last-child {margin-left: 20px; font-size: 14px;}
+main #activities .content ul li:last-child span.date {font-size: 13px; font-weight: 500; color: hotpink;}
+main #activities .content ul li:last-child .profile-img {display: flex; margin-bottom: 20px;}
+main #activities .content ul li:last-child .profile-img div {width: 30px; height: 30px; border-radius: 50%; overflow: hidden; text-align: center; font-weight: 500; background: aquamarine; margin-left: -5px;}
+main #activities .content ul li:last-child .profile-img div:nth-child(3) {font-size: 20px;}
+main #activities .content ul li:last-child .profile-img div:last-child {background:rgb(255, 215, 156); font-size: 20px;}
+main #activities .content ul li:last-child .project-img {display: flex; margin-bottom: 20px; padding: 5px; justify-content: space-between;}
+main #activities .content ul li:last-child .project-img div {width: 30%; border: 1px dotted #ddd;}
+
+/* main projects tab */
+main #projects {background: #f3f3f9; border: 1px solid #fff; padding: 20px 10px; border-radius: 4px; margin-bottom: 30px;}
+main #projects .content {margin-top: 10px;}
+main #projects .content .card {border: none; border-left: 3px solid; box-shadow: 0px 0px 5px #ddd; font-size: 15px;}
+main #projects .content .card ul.members {display: flex; margin: 10px 0; font-size: 14px;}
+main #projects .content .card ul.members li:last-child {margin-left: 20px;}
+main #projects .content .card ul.members li:last-child img {margin-left: -10px;}
+main #projects .content .card ul.members li:last-child span {margin-left: -10px; background: lightgreen; font-size: 18px; border-radius: 50%; padding: 1px 9px 6px; width: 30px; height: 30px;}
+
+/* main document tab */
+main #documents {background: #f3f3f9; border: 1px solid #fff; padding: 20px 10px; border-radius: 4px; margin-bottom: 30px;}
+main #documents h6 .file-upload {display: inline-block; background: honeydew; overflow: hidden; position: absolute; right: 0; text-align: center; padding: 5px 10px; font-weight: 600; border-radius: 2px; box-shadow: 0px 0px 10px #ddd;}
+main #documents h6 .file-upload input {width: 200px; position: absolute; opacity: 0;}
+main #documents h6 .file-upload:hover {background: #ffb3ce33;}
+        /* table */
+main #documents table {width: 100%; white-space: nowrap;}
+main #documents table tr {font-weight: 500;}
+main #documents table tr:first-child {font-size: 14px; font-weight: 600; background: #fff; border-bottom: 1px solid #dddddda9;}
+main #documents table tr td {padding: 10px 20px; position: relative;}
+main #documents table tr td .icon {font-size: 22px; margin-right: 10px; color: hotpink;}
+main #documents table tr td .action-btn {background: #f3f3f9; padding: 8px 10px; cursor: pointer; border-radius: 5px; box-shadow: 1px 1px 5px #ddd;}
+main #documents table tr td .actions {position: absolute; background: #fff; box-shadow: 0px 0px 10px #ddd; width: 120px; right: 90%; top: 0; z-index: 5; transform-origin: top right; transform: scale(0); transition: all 0.5s;}
+main #documents table tr td .actions.active {transform: scale(1);}
+main #documents table tr td .actions ul li a {color: #333; font-weight: 500; padding: 10px; display: block;}
+main #documents table tr td .actions ul li a:hover {background: #ffb3ce33;}
+main #documents table tr.hide {display: none;}
+
+                /* codes for main section end here */
+
+                /* codes for footer start from here */
+footer {background: #fff; padding: 20px 0; box-shadow: 0px -2px 5px #ddd;}
+footer a {color: hotpink;}
+                /* codes for footer end here */
+
+                /* codes for media query start from here */
+/* responsive for tab */
+@media screen and (max-width: 768px){
+
+    .menuBar {display: none;}
+    .menuBarShow {display: block; width: 25%;}
+    .bodyContent {width: 100%;}
+    header button.menuShowBtn {display: block;}
+    header button.menuHideBtn {display: none;}
+    .menuBar .menuCloseBtn {display: block;}
+    header .profile-wrapper {background: none;}
+    header .profile-wrapper .name {display: none;}
+
+}
+
+/* responsive for mobile */
+@media screen and (max-width: 425px){
+
+    .logout-alert {width: 90%;}
+    .menuBarShow {width: 60%;}
+    header .searchBar .icon {display: block;}
+    header form.mainSearch { display: none;}
+    header .profile-wrapper img {width: 30px;}
+    header ul li {padding: 5px 2px;}
+    header .cart-wrapper .cart-box {right: -358%; transform-origin: top;}
+    header .notification-wrapper .notification-box {right: -235%; transform-origin: top;}
+    #preloader img {width: 50%; left: 25%;}
+    main .banner {text-align: center;}
+    main .banner ul, main .banner ul.right-item {justify-content: center;}
+    main .banner a.setting-icon {float: none; padding: 5px 20px;}
+    main ul.main-tab-link {justify-content: center;}
+    main ul.main-tab-link li {width: 50%;}
+
+}
+                /* codes for media query end here */

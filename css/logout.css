@@ -1,0 +1,26 @@
+* {margin: 0; padding: 0; box-sizing: border-box;}
+body {background: url(../img/login-bg.jpg); background-repeat: no-repeat; background-position: center; background-size: cover; font-family: 'Courier New', Courier, monospace; height: 100vh;}
+
+                /* login function styling start from here */
+#siteLogout .logout-content {background: #fff; width: 50%; position: absolute; top: 50%; transform: translateY(-50%); left: 25%; padding-bottom: 50px; border-radius: 10px; text-align: center; box-shadow: 0px 0px 20px #888; overflow: hidden;}
+#siteLogout .logout-content button {width: 50%; background: rgb(196, 18, 107); color: #fff; border: none; padding: 15px; margin: 20px 0; font-weight: bold; font-size: 20px; transition: all 0.5s;}
+#siteLogout .logout-content button:hover {background: hotpink;}
+#siteLogout .logout-content button i {display: none;}
+#siteLogout .logout-content button:hover i {display: inline-block;}
+                /* login function styling end here */
+
+                /* codes for media query start from here */
+/* responsive for tab */
+@media screen and (max-width: 768px){
+
+    #siteLogout .logout-content {width: 70%; left: 15%; padding: 20px;}
+
+}
+
+/* responsive for mobile */
+@media screen and (max-width: 425px){
+
+    #siteLogout .logout-content {width: 96%; left: 2%;}
+
+}
+                /* codes for media query end here */

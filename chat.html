@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Chat | Shop Admin</title>
+    <link rel="shortcut icon" href="img/fav.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/chat.css">
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+                <!-- alert for log out start from here -->
+<div id="logout-alert-wrapper">
+    <div class="logout-alert">
+        <h4 class="mb-4">Are you sure you want to log out?</h4>
+        <button class="btn btn-danger me-4" onclick="document.querySelector('.logout-alert').classList.remove('logout-alert-show')">Cancel</button>
+        <button class="btn btn-success" onclick='window.location.replace("logout.html")'>Log Out</button>
+    </div>
+</div>
+                <!-- alert for log out end here -->
+
+<!-- page preloader -->
+<div id="preloader" class="preloader">
+    <img src="img/preloader.gif" alt="preloader">
+</div>
+
+                <!-- codes for menu section start from here -->
+<div class="menuBar">
+    <h4 class="menuCloseBtn bi bi-arrow-left btn" onclick='document.querySelector(".menuBar").classList.remove("menuBarShow");'></h4>
+    <div class="menuBarLogo text-center"><a href="dashboard.html"><img src="img/logo.svg" alt="Logo" width="60%"></a></div>
+    <ul class="menu-items mt-4">
+        <li class="menu-link"><a href="dashboard.html"><i class="bi bi-command"></i> Dashboard</a></li>
+        <li class="menu-link"><a href="profile.html"><i class="bi bi-person"></i> Profile</a></li>
+        <li class="menu-link"><a href="settings.html"><i class="bi bi-gear"></i> Settings</a></li>
+        <li class="menu-link"><a href="chat.html" class="active"><i class="bi bi-chat-dots"></i> Chat</a></li>
+        <li class="menu-link"><a href="tasks.html"><i class="bi bi-sliders"></i> Tasks</a></li>
+        <li class="menu-link"><a href="faq.html"><i class="bi bi-info-circle"></i> Help</a></li>
+        <li class="menu-link"><a href="product-details.html"><i class="bi bi-truck"></i> Checkout</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-ui-checks"></i> Base UI</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-ui-checks-grid"></i> Advanced UI</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-columns"></i> Widgets</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-file-text"></i> Forms</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-grid-3x3"></i> Tables</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-card-text"></i> Charts</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-emoji-smile"></i> Icons</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-globe2"></i> Maps</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-bar-chart"></i> Multi Level</a></li>
+        <li class="menu-link"><button onclick="document.querySelector('.logout-alert').classList.add('logout-alert-show')"><i class="bi bi-box-arrow-right"></i> Log Out</button></li>
+    </ul>
+</div>
+                <!-- codes for menu section end here -->
+
+                <!-- codes for main section start from here -->
+<main>
+    <div class="main-chat">
+        <!-- people -->
+        <div class="chat-people-wrapper">
+            <div class="page-title">
+                <h6>LIVE CHAT</h6>
+                <button class="menuBtn menuHideBtn bi bi-list" onclick='document.querySelector(".menuBar").classList.add("menuBarShow");'></button>
+            </div>
+            <div class="chat-persons">
+                <h6 style="font-size: 14px; font-weight: 600; margin: 20px 10px;">DIRECT MESSAGES <span style="float: right; background: lightblue; padding: 4px 9px; border-radius: 3px; cursor: pointer;">+</span></h6>
+                <ul class="active">
+                    <li><img src="img/user1.jpg" alt="user" style="width: 30px; border-radius: 50%;"></li>
+                    <li>Lisa Parker</li>
+                </ul>
+                <ul>
+                    <li><img src="img/user2.jpg" alt="user" style="width: 30px; border-radius: 50%;"></li>
+                    <li>Frank Thomas</li>
+                </ul>
+                <ul>
+                    <li><img src="img/user3.jpg" alt="user" style="width: 30px; border-radius: 50%;"></li>
+                    <li>Clifford Taylor</li>
+                </ul>
+                <ul>
+                    <li><img src="img/user4.jpg" alt="user" style="width: 30px; border-radius: 50%;"></li>
+                    <li>Janette Caster</li>
+                </ul>
+                <ul>
+                    <li><img src="img/user5.jpg" alt="user" style="width: 30px; border-radius: 50%;"></li>
+                    <li>Sarah Beattie</li>
+                </ul>
+                <ul>
+                    <li><img src="img/user6.jpg" alt="user" style="width: 30px; border-radius: 50%;"></li>
+                    <li>Nellie Cornett</li>
+                </ul>
+                <ul>
+                    <li><img src="img/user7.jpg" alt="user" style="width: 30px; border-radius: 50%;"></li>
+                    <li>Chris Kiernan</li>
+                </ul>
+                <ul>
+                    <li><img src="img/user8.jpg" alt="user" style="width: 30px; border-radius: 50%;"></li>
+                    <li>Edith Evans</li>
+                </ul>
+    
+                <h6 style="font-weight: 600; margin: 20px 10px;">Channels <span style="float: right; background: lightblue; padding: 4px 9px; border-radius: 3px; cursor: pointer;">+</span></h6>
+                <ul>
+                    <li><span style="background: #eee; border-radius: 50%; padding: 6px 10px;">#</span></li>
+                    <li>Landing Design</li>
+                </ul>
+                <ul>
+                    <li><span style="background: #eee; border-radius: 50%; padding: 6px 10px;">#</span></li>
+                    <li>General</li>
+                </ul>
+                <ul>
+                    <li><span style="background: #eee; border-radius: 50%; padding: 6px 10px;">#</span></li>
+                    <li>Project Tasks</li>
+                </ul>
+                <ul>
+                    <li><span style="background: #eee; border-radius: 50%; padding: 6px 10px;">#</span></li>
+                    <li>Meeting</li>
+                </ul>
+                <ul>
+                    <li><span style="background: #eee; border-radius: 50%; padding: 6px 10px;">#</span></li>
+                    <li>Reporting</li>
+                </ul>
+                        <script>
+                            $(document).ready(function(){
+                                $('main .chat-people-wrapper .chat-persons ul').click(function(){
+                                    $('main .chat-people-wrapper .chat-persons ul').removeClass('active');
+                                    $(this).addClass('active');
+                                    $('main .chat-box-wrapper').addClass('chat-box-wrapper-show')
+                                    $('main .chat-people-wrapper').addClass('chat-people-wrapper-hide')
+                                })
+                            })
+                        </script>
+            </div>
+        </div>
+    <!-- chat box -->
+        <div class="chat-box-wrapper">
+            <div class="topBar">
+                <div class="left-content">
+                    <button class="chat-back bi bi-arrow-left" onclick='document.querySelector("main .chat-box-wrapper").classList.remove("chat-box-wrapper-show"); document.querySelector("main .chat-people-wrapper").classList.remove("chat-people-wrapper-hide");'></button>
+                    <div class="profile-pic">
+                        <img src="img/user1.jpg" alt="user" style="width: 100%; border-radius: 50%;">
+                    </div>
+                    <div class="name fw-bold lh-1">
+                        <span onclick="document.querySelector('.chat-profile-wrapper').style.display='block';">Lisa Parker</span> <br>
+                        <span style="font-size: 11px; ">Online</span>
+                    </div>
+                </div>
+                <div class="right-content">
+                    <button class="float-end bi bi-info-circle" onclick="document.querySelector('.chat-profile-wrapper').style.display='block';"></button>
+                </div>
+            </div>
+            <div class="main-chat">
+                <div class="chats">
+                    <div id="chat-form">
+                        <div class="form-box">
+                            <div class="chat-box">
+                                <div class="message-con">
+                                    <ul class="client-message"><li>are you available to chat?</li></ul>
+                                    <ul id="messages"></ul>
+                                </div>
+                            </div>
+                            <div class="text-field"> 
+                                <div class="form-container">
+                                    <form class="text-form">
+                                        <input id="input" type="text" placeholder="Aa">
+                                    </form>
+                                </div>
+                                <div class="submit-btn position-relative">
+                                    <button><i class="bi bi-send-fill"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- profile -->
+        <div class="chat-profile-wrapper">
+            <div class="banner">
+                <i class="bi bi-x-lg text-white btn" onclick="document.querySelector('.chat-profile-wrapper').style.display = 'none'"></i>
+            </div>
+            <div class="profile">
+                <img src="img/user1.jpg" alt="profile" style="width: 80px; border-radius: 50%;"> <br> <br>
+                <h5 class="lh-1 fw-bold">Lisa Parker</h5>
+                <span style="font-size: 12px; font-weight: 600; position: relative;">Online</span>
+                <div class="mt-2">
+                    <button class="bi bi-chat-left-dots" onclick="document.querySelector('.chat-profile-wrapper').style.display = 'none'"></button>
+                    <button class="bi bi-star-fill" onclick="this.classList.toggle('bi-star')"></button>
+                    <button class="bi bi-telephone"></button>
+                    <button class="bi bi-three-dots"></button>
+                </div>
+            </div>
+            <hr>
+            <div class="details">
+                <h6><b>Personal Details</b></h6>
+                <span class="text-muted">NUMBER</span>
+                <p>+ (256) 2451 8974</p>
+                <span class="text-muted">EMAIL</span>
+                <p>lisaparker@gmail.com</p>
+                <span class="text-muted">LOCATION</span>
+                <p>California, USA</p>
+            </div>
+        </div>
+    </div> 
+</main>
+                <!-- codes for main section end here -->
+
+</body>
+</html>
+
+
+
+<script>
+    $(document).ready(function(){
+  
+  $(".submit-btn button").click(function(){
+   let message = $("#input").val();
+   
+    if (message == "") {
+      alert("No empty messages please!");
+    }
+    else {
+      var item = document.createElement('li');
+      item.textContent = message;
+      $( "ul#messages" ).append(item);
+      $('#input').val('');
+    }
+   });
+
+ });
+
+</script>
+
+
+
+

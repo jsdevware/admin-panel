@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | Shop Admin</title>
+    <link rel="shortcut icon" href="img/fav.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+                <!-- alert for log out start from here -->
+<div id="logout-alert-wrapper">
+    <div class="logout-alert">
+        <h4 class="mb-4">Are you sure you want to log out?</h4>
+        <button class="btn btn-danger me-4" onclick="document.querySelector('.logout-alert').classList.remove('logout-alert-show')">Cancel</button>
+        <button class="btn btn-success" onclick='window.location.replace("logout.html")'>Log Out</button>
+    </div>
+</div>
+                <!-- alert for log out end here -->
+
+<!-- page preloader -->
+<div id="preloader" class="preloader">
+    <img src="img/preloader.gif" alt="preloader">
+</div>
+
+                <!-- codes for menu section start from here -->
+<div class="menuBar">
+    <h4 class="menuCloseBtn bi bi-x-lg btn" onclick='document.querySelector(".menuBar").classList.remove("menuBarShow");'></h4>
+    <div class="menuBarLogo text-center"><a href="dashboard.html"><img src="img/logo.svg" alt="Logo" width="60%"></a></div>
+    <ul class="menu-items mt-4">
+        <li class="menu-link"><a href="dashboard.html"><i class="bi bi-command"></i> Dashboard</a></li>
+        <li class="menu-link"><a href="profile.html" class="active"><i class="bi bi-person"></i> Profile</a></li>
+        <li class="menu-link"><a href="settings.html"><i class="bi bi-gear"></i> Settings</a></li>
+        <li class="menu-link"><a href="chat.html"><i class="bi bi-chat-dots"></i> Chat</a></li>
+        <li class="menu-link"><a href="tasks.html"><i class="bi bi-sliders"></i> Tasks</a></li>
+        <li class="menu-link"><a href="faq.html"><i class="bi bi-info-circle"></i> Help</a></li>
+        <li class="menu-link"><a href="product-details.html"><i class="bi bi-truck"></i> Checkout</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-ui-checks"></i> Base UI</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-ui-checks-grid"></i> Advanced UI</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-columns"></i> Widgets</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-file-text"></i> Forms</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-grid-3x3"></i> Tables</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-card-text"></i> Charts</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-emoji-smile"></i> Icons</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-globe2"></i> Maps</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-bar-chart"></i> Multi Level</a></li>
+        <li class="menu-link"><button onclick="document.querySelector('.logout-alert').classList.add('logout-alert-show')"><i class="bi bi-box-arrow-right"></i> Log Out</button></li>
+    </ul>
+</div>
+                <!-- codes for menu section end here -->
+
+<div class="bodyContent">
+
+                    <!-- codes for header section start from here -->
+<header id="header">
+    <div class="container">
+        <ul>
+            <li>
+                <button class="menuBtn menuHideBtn bi bi-arrow-left" onclick="menuHideFunction()"></button>
+                <button class="menuBtn menuShowBtn bi bi-list-nested" onclick='document.querySelector(".menuBar").classList.add("menuBarShow");'></button>
+                        <script>
+                            // script for hide menu
+                                function menuHideFunction(){
+                                    document.querySelector(".menuHideBtn").classList.toggle("bi-list-nested");
+                                    document.querySelector(".menuBar").classList.toggle("menuBarHide");
+                                    document.querySelector(".bodyContent").classList.toggle("bodyContentHide");
+                                };
+                        </script>
+            </li>
+            <li>
+                <form action="" class="mainSearch">
+                    <div class="item">
+                        <i class="bi bi-search"></i> <input type="search" name="search" id="search" placeholder="Search">
+                    </div>
+                </form>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <div class="searchBar">
+                    <div class="icon" onclick="document.querySelector('.searchBox').classList.toggle('searchBoxShow')"><i class="bi bi-search"></i></div>
+                    <div class="searchBox">
+                        <div class="box">
+                            <form action="">
+                                <i class="bi bi-search"></i> <input type="search" name="search" id="search" placeholder="Search...">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        <!-- codes for zooming the page-->
+            <li>
+                <div class="icon"> <i class="bi bi-fullscreen pageZoomIn" title="Zoom In Page" onclick="pageZoomIn()"></i> <i class="bi bi-fullscreen-exit pageZoomOut" title="Zoom Out Page" onclick="pageZoomOut()"></i></div>
+                        <script>
+                        //codes for page zooming
+                            var elem = document.documentElement;
+                            function pageZoomIn() {
+                            if (elem.requestFullscreen) {
+                                elem.requestFullscreen();
+                            } else if (elem.webkitRequestFullscreen) { 
+                                elem.webkitRequestFullscreen(); /* for Safari */
+                            } else if (elem.msRequestFullscreen) { 
+                                elem.msRequestFullscreen(); /* for Edge */
+                            }
+                            };
+
+                            function pageZoomOut() {
+                            if (document.exitFullscreen) {
+                                document.exitFullscreen();
+                            } else if (document.webkitExitFullscreen) { 
+                                document.webkitExitFullscreen(); /* for Safari */
+                            } else if (document.msExitFullscreen) { 
+                                document.msExitFullscreen(); /* for Edge */
+                            }
+                            };
+                        </script>
+            </li>
+        <!-- codes for cart wrapper -->
+            <li>
+                <div class="cart-wrapper position-relative">
+                    <div class="icon" title="My Cart" onclick="document.querySelector('.cart-box').classList.toggle('cart-box-show')"> <i class="bi bi-cart4"></i> <span>5</span></div>
+                    <div class="cart-box">
+                        <div class="topBar">
+                            <h5 class="p-3">
+                                <b>My cart</b>
+                                <span class="float-end fs-6 bg-warning rounded p-1">5 Items</span>
+                            </h5>
+                        </div>
+                        <div class="item-wrapper">
+                            <div class="single-item item1">
+                                <ul>
+                                    <li> <img src="img/tshirt-red.png" alt="t-shirt"> </li>
+                                    <li>
+                                        <a href="product-details.html">Branded T-Shirt</a> <br>
+                                        <span>Quantity : 10 x $32</span>
+                                    </li>
+                                    <li>$320 <i class="bi bi-x-lg ms-2" onclick="document.querySelector('.item1').classList.add('single-item-hide')"></i></li>
+                                </ul>
+                            </div>
+                            <div class="single-item item2">
+                                <ul>
+                                    <li> <img src="img/chair.png" alt="chair"> </li>
+                                    <li>
+                                        <a href="product-details.html">Bentwood Chair</a> <br>
+                                        <span>Quantity : 5 x $18</span>
+                                    </li>
+                                    <li>$90 <i class="bi bi-x-lg ms-2" onclick="document.querySelector('.item2').classList.add('single-item-hide')"></i></li>
+                                </ul>
+                            </div>
+                            <div class="single-item item3">
+                                <ul>
+                                    <li> <img src="img/helmet.png" alt="helmet"> </li>
+                                    <li>
+                                        <a href="product-details.html">Stillbird Helmet</a> <br>
+                                        <span>Quantity : 2 x $495</span>
+                                    </li>
+                                    <li>$990 <i class="bi bi-x-lg ms-2" onclick="document.querySelector('.item3').classList.add('single-item-hide')"></i></li>
+                                </ul>
+                            </div>
+                            <div class="single-item item4">
+                                <ul>
+                                    <li> <img src="img/paper-cup.png" alt="Cup"> </li>
+                                    <li>
+                                        <a href="product-details.html">Borosil Paper Cup</a> <br>
+                                        <span>Quantity : 3 x $250</span>
+                                    </li>
+                                    <li>$750 <i class="bi bi-x-lg ms-2" onclick="document.querySelector('.item4').classList.add('single-item-hide')"></i></li>
+                                </ul>
+                            </div>
+                            <div class="single-item item5">
+                                <ul>
+                                    <li> <img src="img/tshirt-gray.png" alt="t-shirt"> </li>
+                                    <li>
+                                        <a href="product-details.html">Gray T-Shirt</a> <br>
+                                        <span>Quantity : 1 x $147</span>
+                                    </li>
+                                    <li>$147 <i class="bi bi-x-lg ms-2" onclick="document.querySelector('.item5').classList.add('single-item-hide')"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="bottomBar">
+                            <h6 class="text-muted mb-3">Total : <span class="text-dark float-end">$3399.00</span></h6>
+                            <a href="product-details.html">Checkout</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        <!-- codes for notification wrapper-->
+            <li>
+                <div class="notification-wrapper position-relative">
+                    <div class="icon" title="Notifications" onclick="document.querySelector('.notification-box').classList.toggle('notification-box-show')"> <i class="bi bi-bell"></i> <span>9+</span></div>
+                    <div class="notification-box">
+                        <div class="topBar">
+                            <h5 class="p-3">
+                                <b>Notifications</b>
+                                <span class="float-end fs-6 bg-primary text-light rounded p-1">4 New</span>
+                            </h5>
+                            <ul class="tabs float-start">
+                                <li class="tab-link current" data-tab="tab-1">All (10)</li>
+                                <li class="tab-link" data-tab="tab-2">Messages (5)</li>
+                                <li class="tab-link" data-tab="tab-3">Alerts</li>
+                            </ul>
+                        </div>
+                        <div class="main">
+                        <!-- notifications -->
+                            <div id="tab-1" class="tab-content current">
+                                <div class="item">
+                                    <ul class="ul1">
+                                        <li><div> <i class="bi bi-browser-chrome"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> JUST 30 SEC AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul1').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul2">
+                                        <li><div> <i class="bi bi-browser-edge"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 48 MIN AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul2').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul3">
+                                        <li><div> <i class="bi bi-browser-firefox"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 2 HRS AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul3').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul4">
+                                        <li><div> <i class="bi bi-browser-safari"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 4 HRS AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul4').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul5">
+                                        <li><div> <i class="bi bi-browser-chrome"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> JUST 30 SEC AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul5').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul6">
+                                        <li><div> <i class="bi bi-browser-edge"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 48 MIN AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul6').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul7">
+                                        <li><div> <i class="bi bi-browser-firefox"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 2 HRS AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul7').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul8">
+                                        <li><div> <i class="bi bi-browser-safari"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 4 HRS AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul8').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul9">
+                                        <li><div> <i class="bi bi-browser-firefox"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 2 HRS AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul9').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul10">
+                                        <li><div> <i class="bi bi-browser-safari"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 4 HRS AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul10').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="text-center py-3"><a href="#" class="btn btn-outline-success mt-4">View All Notifications <i class="bi bi-arrow-right"></i></a></div>
+                            </div>
+                        <!-- messages -->
+                            <div id="tab-2" class="tab-content">
+                                <div class="item">
+                                    <ul class="ul11">
+                                        <li><div> <img src="img/profile.jpg" alt="user"> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> JUST 30 SEC AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul11').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul12">
+                                        <li><div> <img src="img/user1.jpg" alt="user"> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> JUST 30 SEC AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul12').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul13">
+                                        <li><div> <img src="img/user2.jpg" alt="user"> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 48 MIN AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul13').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul14">
+                                        <li><div> <img src="img/user3.jpg" alt="user"> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 2 HRS AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul14').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul15">
+                                        <li><div> <img src="img/user4.jpg" alt="user"> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 4 HRS AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul15').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="text-center py-3"><a href="#" class="btn btn-outline-success mt-4">View All Messages <i class="bi bi-arrow-right"></i></a></div>
+                            </div>
+                        <!-- alerts -->
+                            <div id="tab-3" class="tab-content text-center">
+                                <img src="img/bell.png" alt="bell" width="100px" class="my-5">
+                                <h4>Hey! You have no any alerts</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                    <script>
+                                    // codes for tab menu
+                                        $(document).ready(function(){
+                                            $('ul.tabs li').click(function(){
+                                                var tab_id = $(this).attr('data-tab');
+
+                                                $('ul.tabs li').removeClass('current');
+                                                $('.tab-content').removeClass('current');
+
+                                                $(this).addClass('current');
+                                                $("#"+tab_id).addClass('current');
+                                            })
+                                        })
+                                    </script>
+            </li>
+        <!-- codes for profile wrapper-->
+            <li>
+                <div class="profile-wrapper position-relative">
+                    <div class="button" onclick="document.querySelector('.profile-box').classList.toggle('profile-box-show')">
+                        <img src="img/profile.jpg" alt="Profile">
+                        <div class="name">
+                            <b>Anna Adame</b> <br>
+                            <span>Founder</span>
+                        </div>
+                    </div>
+                    <div class="profile-box">
+                        <h6 class="text-muted px-3">Welcome Anna!</h6>
+                        <ul>
+                            <li><a href="profile.html"><i class="bi bi-person-circle"></i> Profile</a></li>
+                            <li><a href="chat.html"><i class="bi bi-chat-left-dots"></i> Messages</a></li>
+                            <li><a href="tasks.html"><i class="bi bi-clipboard-check"></i> Taskboard</a></li>
+                            <li><a href="faq.html"><i class="bi bi-info-circle"></i> Help</a></li>
+                        </ul>
+                        <hr>
+                        <ul>
+                            <li><a href="profile.html"><i class="bi bi-cash-coin"></i> Balance : $5971.67</a></li>
+                            <li><a href="settings.html"><i class="bi bi-gear"></i> Settings <span class="float-end px-1 rounded bg-info">New</span></a></li>
+                            <li><a href="#"><i class="bi bi-lock"></i> Lock Screen</a></li>
+                            <li><button onclick="document.querySelector('.logout-alert').classList.add('logout-alert-show')"><i class="bi bi-box-arrow-right"></i> Log Out</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</header>
+                <!-- codes for header section end here -->
+
+                <!-- codes for main section start from here -->
+<main>
+<!-- page title  -->
+    <div class="page-title">
+        <h6>MY PROFILE</h6>
+    </div>
+<!-- profile banner -->
+    <div class="banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="left-item">
+                            <li><img src="img/profile.jpg" alt="profile"></li>
+                            <li>
+                                <h5><b>Anna Adame</b></h5>
+                                <p>Owner & Founder</p>
+                            </li>
+                        </ul>
+                        <p class="mt-3"><i class="bi bi-geo-alt-fill"></i> California, United State</p>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="right-item">
+                            <li><h4><b>24.3K</b></h4> <p>Followers</p></li>
+                            <li><h4><b>1.7K</b></h4> <p>Following</p></li>
+                        </ul>
+                        <a href="settings.html" class="setting-icon"><i class="bi bi-gear"></i> Edit Profile</a>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="container">
+        <ul class="main-tab-link">
+            <li data-tab="overview" class="active">Overview</li>
+            <li data-tab="activities">Activities</li>
+            <li data-tab="projects">Projects</li>
+            <li data-tab="documents">Documents</li>
+        </ul>
+    <!-- overview tab -->
+        <div id="overview" class="tab-desc active">
+            <div class="row">
+                <div class="col-lg-3 p-3">
+                    <div class="card p-3 mb-4">
+                        <h6><b>Complete Your Profile</b></h6>
+                        <div class="progress">
+                            <div class="range"></div>
+                        </div>
+                    </div>
+
+                    <div class="card info p-3 mb-4">
+                        <h6><b>Info</b></h6>
+                        <ul>
+                            <li><b>Full Name:</b> Anna Adame</li>
+                            <li><b>Mobile :</b> +(1)987 6543</li>
+                            <li><b>E-mail :</b> anna.adame@sample.com</li>
+                            <li><b>Location :</b> California, United States</li>
+                            <li><b>Joining Date :</b> 24 Nov, 2021</li>
+                        </ul>
+                    </div>
+
+                    <div class="card portfolio p-3 mb-4">
+                        <h6><b>Portfolio</b></h6>
+                        <ul>
+                            <li title="Facebook"><a href="javascript:void(0);"><img src="img/facebook.png" alt="facebook" width="100%"></a></li>
+                            <li title="Twitter"><a href="javascript:void(0);"><img src="img/twitter.png" alt="twitter" width="100%"></a></li>
+                            <li title="Instagram"><a href="javascript:void(0);"><img src="img/insta.png" alt="instagram" width="100%"></a></li>
+                            <li title="Linkedin"><a href="javascript:void(0);"><img src="img/linkedin.png" alt="linkedin" width="100%"></a></li>
+                            <li title="Github"><a href="javascript:void(0);"><img src="img/github.png" alt="github" width="100%"></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card skills p-3 mb-4">
+                        <h6><b>Skills</b></h6>
+                        <ul>
+                            <li>Photoshop</li>
+                            <li>illustrator</li>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>PHP</li>
+                            <li>Python</li>
+                        </ul>
+                    </div>
+
+                    <div class="card suggestions p-3 mb-4">
+                        <h6>
+                            <b>Suggestions</b>
+                            <span class="menu-icon menu-icon1 float-end bi bi-three-dots-vertical position-relative" onclick="menu1()">
+                                <div class="menu-item menu1">
+                                    <a href="javascript:void(0);">View</a>
+                                    <a href="javascript:void(0);">Edit</a>
+                                    <a href="javascript:void(0);" onclick="document.querySelector('main #overview .suggestions').classList.add('suggestions-hide')">Delete</a>
+                                </div>
+                            </span>
+                                    <script>
+                                        function menu1(){
+                                            document.querySelector('.menu-icon1').classList.toggle('bi-three-dots');
+                                            document.querySelector('.menu1').classList.toggle('show');
+                                        };
+                                    </script>
+                        </h6>
+                        <ul>
+                            <li><img src="img/user6.jpg" alt="user" style="width: 35px; border-radius: 50%;"></li>
+                            <li>
+                                <b>Esther James</b> <br>
+                                <span>Frontend Developer</span>
+                            </li>
+                            <li><a href="javascript:void(0);" class="bi bi-person-plus"></a></li>
+                        </ul>
+                        <ul>
+                            <li><img src="img/user7.jpg" alt="user" style="width: 35px; border-radius: 50%;"></li>
+                            <li>
+                                <b>Jacqueline Steve</b> <br>
+                                <span>UI/UX Designer</span>
+                            </li>
+                            <li><a href="javascript:void(0);" class="bi bi-person-plus"></a></li>
+                        </ul>
+                        <ul>
+                            <li><img src="img/user8.jpg" alt="user" style="width: 35px; border-radius: 50%;"></li>
+                            <li>
+                                <b>George Whalen</b> <br>
+                                <span>Backend Developer</span>
+                            </li>
+                            <li><a href="javascript:void(0);" class="bi bi-person-plus"></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card posts p-3">
+                        <h6>
+                            <b>Popular Posts</b>
+                            <span class="menu-icon menu-icon2 float-end bi bi-three-dots-vertical position-relative" onclick="menu2()">
+                                <div class="menu-item menu2">
+                                    <a href="javascript:void(0);">View</a>
+                                    <a href="javascript:void(0);">Edit</a>
+                                    <a href="javascript:void(0);" onclick="document.querySelector('main #overview .posts').classList.add('posts-hide')">Delete</a>
+                                </div>
+                            </span>
+                                    <script>
+                                        function menu2(){
+                                            document.querySelector('.menu-icon2').classList.toggle('bi-three-dots');
+                                            document.querySelector('.menu2').classList.toggle('show');
+                                        };
+                                    </script>
+                        </h6>
+                        <ul>
+                            <li><img src="img/project1.jpg" alt="user" style="width: 100px; border-radius: 5px;"></li>
+                            <li>
+                                <a href="javascript:void(0);"><b>Design your apps from us.</b></a> <br>
+                                <span>15 Dec, 2021</span>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li><img src="img/project2.jpg" alt="user" style="width: 100px; border-radius: 5px;"></li>
+                            <li>
+                                <a href="javascript:void(0);"><b>Beautiful UX/UI design.</b></a> <br>
+                                <span>15 Dec, 2021</span>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li><img src="img/project3.jpg" alt="user" style="width: 100px; border-radius: 5px;"></li>
+                            <li>
+                                <a href="javascript:void(0);"><b>Make a custom website.</b></a> <br>
+                                <span>15 Dec, 2021</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-9 p-3">
+                    <div class="card about p-3 mb-4">
+                        <h6><b>About</b></h6>
+                        <div class="content">
+                            <p>Hi I'm Anna Adame, It will be as simple as Occidental; in fact, it will be Occidental. To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is European languages are members of the same family.</p>
+                            <p>You always want to make sure that your fonts work well together and try to limit the number of fonts you use to three or less. Experiment and play around with the fonts that you already have in the software you’re working with reputable font websites. This may be the most commonly encountered tip I received from the designers I spoke with. They highly encourage that you use different fonts in one design, but do not over-exaggerate and go overboard.</p>
+                            <div class="row mt-4">
+                                <div class="col-xl-4 col-md-5">
+                                    <ul>
+                                        <li><i class="bi bi-person"></i></li>
+                                        <li>
+                                            <span>Designation :</span>  <br>
+                                            <b>Lead Designer / Developer</b>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-xl-4 col-md-5">
+                                    <ul>
+                                        <li><i class="bi bi-globe2"></i></li>
+                                        <li>
+                                            <span>Website :</span>  <br>
+                                            <b>www.eCommerce.com</b>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card activities mb-4">
+                        <h6 class="p-3"><b>Recent Activities</b></h6>
+                        <div class="content">
+                            <div class="item">
+                                <ul onclick="document.querySelector('main #overview .activities .collapse-content-1').classList.toggle('collapse-content-hide')">
+                                    <li><img src="img/user5.jpg" alt="user" width="30px" class="rounded-circle"></li>
+                                    <li>
+                                        <b>Jacqueline Steve</b>
+                                        <p>We has changed 2 attributes on 17:16</p>
+                                    </li>
+                                </ul>
+                                <div class="collapse-content collapse-content-1">
+                                    <i>" In an awareness campaign, it is vital for people to begin put 2 and 2 together and begin to recognize your cause. Too much or too little spacing, as in the example below, can make things unpleasant for the reader. The goal is to make your text as comfortable to read as possible. A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. "</i>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <ul onclick="document.querySelector('main #overview .activities .collapse-content-2').classList.toggle('collapse-content-hide')">
+                                    <li><b style="font-size: 18px; background: #fff; color: green; padding: 3px 8px; border-radius: 50%;">M</b></li>
+                                    <li>
+                                        <b>Megan Elmore</b>
+                                        <p>Adding a new event with attachments - 16.45</p>
+                                    </li>
+                                </ul>
+                                <div class="collapse-content collapse-content-2">
+                                   <div class="row">
+                                    <div class="col-xl-5 col-md-6 p-2">
+                                        <ul>
+                                            <li class="bi bi-image text-danger"></li>
+                                            <li>
+                                                <b>Business Template UI/UX design</b>
+                                                <p>685 KB</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-xl-5 col-md-6 p-2">
+                                        <ul>
+                                            <li class="bi bi-filetype-psd text-primary"></li>
+                                            <li>
+                                                <b>Bank Management System - PSD</b>
+                                                <p>8.78 MB</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                   </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <ul>
+                                    <li><img src="img/user8.jpg" alt="user" width="30px" class="rounded-circle"></li>
+                                    <li>
+                                        <b>New ticket received</b>
+                                        <p>User <span class="text-primary">Erica245</span> submitted a ticket - 14.33</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="item">
+                                <ul onclick="document.querySelector('main #overview .activities .collapse-content-3').classList.toggle('collapse-content-hide')">
+                                    <li><i class="bi bi-person-fill" style="font-size: 18px; background: #fff; padding: 5px 8px; border-radius: 50%;"></i></li>
+                                    <li>
+                                        <b>Nancy Martino</b>
+                                        <p>Commented on 12.57</p>
+                                    </li>
+                                </ul>
+                                <div class="collapse-content collapse-content-3">
+                                    <i>" A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. Each design is a new, unique piece of art birthed into this world, and while you have the opportunity to be creative and make your own style choices. "</i>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <ul onclick="document.querySelector('main #overview .activities .collapse-content-4').classList.toggle('collapse-content-hide')">
+                                    <li><img src="img/user6.jpg" alt="user" width="30px" class="rounded-circle"></li>
+                                    <li>
+                                        <b>Lewis Arnold</b>
+                                        <p>Create new project building product - 10.04</p>
+                                    </li>
+                                </ul>
+                                <div class="collapse-content collapse-content-4">
+                                    <span>Every team project can have a velzon. Use the velzon to share information with your team to understand and contribute to your project.</span> <br> <br>
+                                    <div class="profile-img">
+                                        <div><img src="img/user8.jpg" alt="user" width="100%"></div>
+                                        <div><img src="img/user7.jpg" alt="user" width="100%"></div>
+                                        <div>R</div>
+                                        <div>2+</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card projects p-3">
+                        <h6><b>Projects</b></h6>
+                        <div class="row">
+                            <div class="col-xl-4 col-md-6 my-3">
+                                <div class="card p-3 border-primary">
+                                    <h6><b>Chat App Update</b> <span style="float: right; font-size: 13px; background: #FBE7A9; padding: 2px 8px; border-radius: 5px;">In Progress</span></h6>
+                                    <h6>Last Update: <b>2 years Ago</b></h6>
+                                    <ul class="members">
+                                        <li>Members : </li>
+                                        <li>
+                                            <img src="img/user5.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                            <img src="img/user6.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                            <span>J</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-md-6 my-3">
+                                <div class="card p-3 border-warning">
+                                    <h6><b>ABC Project Custo...</b> <span style="float: right; font-size: 13px; background: #e6e4e4; padding: 2px 8px; border-radius: 5px;">Progress</span></h6>
+                                    <h6>Last Update: <b>1 year Ago</b></h6>
+                                    <ul class="members">
+                                        <li>Members : </li>
+                                        <li>
+                                            <img src="img/user8.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                            <img src="img/user6.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                            <img src="img/user5.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                            <span style="padding: 1px 6px 8px;">+2</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-md-6 my-3">
+                                <div class="card p-3 border-success">
+                                    <h6><b>Client - Frank Hook</b> <span style="float: right; font-size: 13px; background: #E9F5FB; padding: 2px 8px; border-radius: 5px;">New</span></h6>
+                                    <h6>Last Update: <b>1 hour Ago</b></h6>
+                                    <ul class="members">
+                                        <li>Members : </li>
+                                        <li>
+                                            <img src="img/user6.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                            <span>M</span>
+                                            <img src="img/user5.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-md-6 mx-auto my-3 d-flex align-items-center justify-content-center">
+                                <button onclick="goToProjects()">Explore More</button>
+                                        <script>
+                                            function goToProjects(){
+                                                document.querySelector('ul.main-tab-link li').classList.remove('active');
+                                                document.querySelector('.tab-desc').classList.remove('active');
+                                                document.querySelector('ul.main-tab-link li:nth-child(3)').classList.add('active');
+                                                document.querySelector('#projects').classList.add('active');
+                                            };
+                                        </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- activities tab -->
+        <div id="activities" class="tab-desc">
+            <h6><b>Activities</b></h6>
+            <div class="content">
+                <div class="item">
+                    <ul>
+                        <li><img src="img/user1.jpg" alt="user" width="30px" class="rounded-circle"></li>
+                        <li>
+                            <b>Oliver Phillips <span style="background: #ddd; border-radius: 3px; padding: 0px 5px; font-size: 12px;">New</span></b>
+                            <p>We talked about a project on linkedin.</p>
+                            <span class="date">Today</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <ul>
+                        <li><img src="img/user2.jpg" alt="user" width="30px" class="rounded-circle"></li>
+                        <li>
+                            <b>Bethany Johnson</b>
+                            <p>added a new member to velzon dashboard.</p>
+                            <span class="date">Yesterday</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <ul>
+                        <li><b style="font-size: 22px; background: greenyellow; padding: 2px 8px; border-radius: 50%;">N</b></li>
+                        <li>
+                            <b>Nancy Martino  <span style="background: rgb(174, 174, 255); border-radius: 3px; padding: 0px 5px; font-size: 12px;">In Progress</span></b>
+                            <p><i class="bi bi-file-earmark-text"></i>  Create new project Building product.</p>
+                            <div class="profile-img">
+                                <div><img src="img/user8.jpg" alt="user" width="100%"></div>
+                                <div><img src="img/user7.jpg" alt="user" width="100%"></div>
+                                <div>R</div>
+                                <div>2+</div>
+                            </div>
+                            <span class="date">25 Nov</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <ul>
+                        <li><img src="img/user5.jpg" alt="user" width="30px" class="rounded-circle"></li>
+                        <li>
+                            <b>Natasha Carey  <span style="background: lightblue; border-radius: 3px; padding: 0px 5px; font-size: 12px;">Completed</span></b>
+                            <p>  Adding a new event with attachments.</p>
+                            <div class="project-img">
+                                <div><img src="img/project1.jpg" alt="project" width="100%"></div>
+                                <div><img src="img/project2.jpg" alt="project" width="100%"></div>
+                                <div><img src="img/project3.jpg" alt="project" width="100%"></div>
+                            </div>
+                            <span class="date">12 Nov</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <ul>
+                        <li><b style="font-size: 20px; background: beige; padding: 4px 7px; border-radius: 50%;"><i class="bi bi-lock"></i></b></li>
+                        <li>
+                            <b>Your order is placed  <span style="background: rgb(240, 178, 178); border-radius: 3px; padding: 0px 5px; font-size: 12px;">Delivered</span></b>
+                            <p>These customers can rest assured their order has been placed.</p>
+                            <span class="date">05 Nov</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <ul>
+                        <li><img src="img/user3.jpg" alt="user" width="30px" class="rounded-circle"></li>
+                        <li>
+                            <b>Lewis Pratt</b>
+                            <p>They all have something to say beyond the words on the page. They can come across as casual or neutral, exotic or graphic.</p>
+                            <span class="date">22 Oct</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <ul>
+                        <li><b style="background: #D8EDF9; padding: 8px 10px; border-radius: 50%;"><i class="bi bi-graph-up-arrow"></i></b></li>
+                        <li>
+                            <b>Monthly Sales Report</b>
+                            <p><span class="text-danger">2 days left</span> notification to submit the monthly sales report. <a href="javascript:void(0);" class="text-warning text-decoration-underline">Reports Builder</a></p>
+                            <span class="date">15 Oct</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <ul>
+                        <li><img src="img/user6.jpg" alt="user" width="30px" class="rounded-circle"></li>
+                        <li>
+                            <b>New ticket received <span style="background: lightblue; border-radius: 3px; padding: 0px 5px; font-size: 12px;">Completed</span></b>
+                            <p>User <span class="text-primary">Erica245</span> submitted a ticket.</p>
+                            <span class="date">26 Aug</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <!-- projects tab -->
+        <div id="projects" class="tab-desc">
+            <h6><b>Projects</b></h6>
+            <div class="content row">
+                <div class="col-xl-3 col-lg-4 col-md-6 my-3">
+                    <div class="card p-3 border-primary">
+                        <h6><b>Chat App Update</b> <span style="float: right; font-size: 13px; background: #FBE7A9; padding: 2px 8px; border-radius: 5px;">In Progress</span></h6>
+                        <h6>Last Update: <b>2 years Ago</b></h6>
+                        <ul class="members">
+                            <li>Members : </li>
+                            <li>
+                                <img src="img/user5.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                <img src="img/user6.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                <span>J</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 my-3">
+                    <div class="card p-3 border-secondary">
+                        <h6><b>ABC Project Custo...</b> <span style="float: right; font-size: 13px; background: #e6e4e4; padding: 2px 8px; border-radius: 5px;">Progress</span></h6>
+                        <h6>Last Update: <b>1 year Ago</b></h6>
+                        <ul class="members">
+                            <li>Members : </li>
+                            <li>
+                                <img src="img/user8.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                <img src="img/user6.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                <img src="img/user5.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                <span style="padding: 1px 6px 8px;">+2</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 my-3">
+                    <div class="card p-3 border-success">
+                        <h6><b>Client - Frank Hook</b> <span style="float: right; font-size: 13px; background: #E9F5FB; padding: 2px 8px; border-radius: 5px;">New</span></h6>
+                        <h6>Last Update: <b>1 hour Ago</b></h6>
+                        <ul class="members">
+                            <li>Members : </li>
+                            <li>
+                                <img src="img/user6.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                <span>M</span>
+                                <img src="img/user5.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 my-3">
+                    <div class="card p-3 border-danger">
+                        <h6><b>Official Project</b> <span style="float: right; font-size: 13px; background: #a9ece3; padding: 2px 8px; border-radius: 5px;">Completed</span></h6>
+                        <h6>Last Update: <b>11 hours Ago</b></h6>
+                        <ul class="members">
+                            <li>Members : </li>
+                            <li>
+                                <img src="img/user5.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                <img src="img/user6.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 my-3">
+                    <div class="card p-3 border-warning">
+                        <h6><b>Brand Logo Design</b> <span style="float: right; font-size: 13px; background: #E9F5FB; padding: 2px 8px; border-radius: 5px;">New</span></h6>
+                        <h6>Last Update: <b>10 minutes Ago</b></h6>
+                        <ul class="members">
+                            <li>Members : </li>
+                            <li>
+                                <img src="img/user2.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                <img src="img/user8.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                <span>E</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 my-3">
+                    <div class="card p-3 border-info">
+                        <h6><b>Chat App</b> <span style="float: right; font-size: 13px; background: #FBE7A9; padding: 2px 8px; border-radius: 5px;">In Progress</span></h6>
+                        <h6>Last Update: <b>8 hours Ago</b></h6>
+                        <ul class="members">
+                            <li>Members : </li>
+                            <li>
+                                <span>R</span>
+                                <img src="img/user3.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                <img src="img/user4.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 my-3">
+                    <div class="card p-3 border-primary">
+                        <h6><b>Project Update</b> <span style="float: right; font-size: 13px; background: #FBE7A9; padding: 2px 8px; border-radius: 5px;">In Progress</span></h6>
+                        <h6>Last Update: <b>48 minutes Ago</b></h6>
+                        <ul class="members">
+                            <li>Members : </li>
+                            <li>
+                                <img src="img/user5.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                <img src="img/user6.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                <img src="img/user8.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 my-3">
+                    <div class="card p-3 border-secondary">
+                        <h6><b>Client - Jennifer</b> <span style="float: right; font-size: 13px; background: #e6e4e4; padding: 2px 8px; border-radius: 5px;">Progress</span></h6>
+                        <h6>Last Update: <b>30 minutes Ago</b></h6>
+                        <ul class="members">
+                            <li>Member : </li>
+                            <li>
+                                <img src="img/user8.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 my-3">
+                    <div class="card p-3 border-success">
+                        <h6><b>Business Temp...</b> <span style="float: right; font-size: 13px; background: #a9ece3; padding: 2px 8px; border-radius: 5px;">Completed</span></h6>
+                        <h6>Last Update: <b>7 months Ago</b></h6>
+                        <ul class="members">
+                            <li>Members : </li>
+                            <li>
+                                <img src="img/user8.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                <img src="img/user6.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                <img src="img/user5.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                <span style="padding: 1px 6px 8px;">+2</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 my-3">
+                    <div class="card p-3 border-danger">
+                        <h6><b>Update Project</b> <span style="float: right; font-size: 13px; background: #E9F5FB; padding: 2px 8px; border-radius: 5px;">New</span></h6>
+                        <h6>Last Update: <b>1 minute Ago</b></h6>
+                        <ul class="members">
+                            <li>Members : </li>
+                            <li>
+                                <img src="img/user7.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                <span>A</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 my-3">
+                    <div class="card p-3 border-warning">
+                        <h6><b>Bank Managem...</b> <span style="float: right; font-size: 13px; background: #a9ece3; padding: 2px 8px; border-radius: 5px;">Completed</span></h6>
+                        <h6>Last Update: <b>10 months Ago</b></h6>
+                        <ul class="members">
+                            <li>Members : </li>
+                            <li>
+                                <img src="img/user1.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                <img src="img/user2.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                <img src="img/user3.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                                <span style="padding: 1px 6px 8px;">+2</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 my-3">
+                    <div class="card p-3 border-info">
+                        <h6><b>PSD to HTML Convert</b> <span style="float: right; font-size: 13px; background: #E9F5FB; padding: 2px 8px; border-radius: 5px;">New</span></h6>
+                        <h6>Last Update: <b>29 minutes Ago</b></h6>
+                        <ul class="members">
+                            <li>Members : </li>
+                            <li>
+                                <img src="img/user4.jpg" alt="user" style="width: 30px; border-radius: 50%;">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- documents tab -->
+        <div id="documents" class="tab-desc">
+            <h6 class="position-relative mb-5"><b>Documents</b> <span class="file-upload"><input type="file" name="file-upload" id="file-upload"><i class="bi bi-upload"></i> Upload File</span></h6>
+        <!-- file table -->
+            <div class="table-responsive">
+                <table>
+                    <tr>    <td>File Name</td>  <td>Type</td>    <td>Size</td>    <td>Upload Date</td> <td>Action</td>    </tr>
+    
+                    <tr class="zip-file">
+                         <td><i class="bi bi-file-earmark-zip icon"></i> Artboard-documents.zip</td>    <td>Zip File</td>   <td>4.57 MB</td>    <td>12 Dec, 2021</td>
+                        <td>
+                            <b class="bi bi-sliders2 action-btn" onclick="document.querySelector('.action1').classList.toggle('active')"></b>
+                                <div class="actions action1">
+                                    <ul>
+                                        <li><a href="javascript:void(0);"><i class="bi bi-eye"></i> View</a></li>
+                                        <li><a href="javascript:void(0);"><i class="bi bi-download"></i> Download</a></li>
+                                        <li><a href="javascript:void(0);" onclick="document.querySelector('main #documents table tr.zip-file').classList.toggle('hide')"><i class="bi bi-trash2"></i> Delete</a></li>
+                                    </ul>
+                                </div>
+                        </td>
+                     </tr>
+    
+                     <tr class="pdf-file">
+                        <td><i class="bi bi-file-earmark-pdf icon"></i> Bank Management System.pdf</td>    <td>PDF File</td>   <td>8.89 MB</td>    <td>24 Nov, 2021</td>
+                       <td>
+                           <b class="bi bi-sliders2 action-btn" onclick="document.querySelector('.action2').classList.toggle('active')"></b>
+                               <div class="actions action2">
+                                   <ul>
+                                       <li><a href="javascript:void(0);"><i class="bi bi-eye"></i> View</a></li>
+                                       <li><a href="javascript:void(0);"><i class="bi bi-download"></i> Download</a></li>
+                                       <li><a href="javascript:void(0);" onclick="document.querySelector('main #documents table tr.pdf-file').classList.toggle('hide')"><i class="bi bi-trash2"></i> Delete</a></li>
+                                   </ul>
+                               </div>
+                       </td>
+                    </tr>
+    
+                    <tr class="mp4-file">
+                        <td><i class="bi bi-filetype-mp4 icon"></i> Tour Video.mp4</td>    <td>MP4 File</td>   <td>14.62 MB</td>    <td>19 Nov, 2021</td>
+                       <td>
+                           <b class="bi bi-sliders2 action-btn" onclick="document.querySelector('.action3').classList.toggle('active')"></b>
+                               <div class="actions action3">
+                                   <ul>
+                                       <li><a href="javascript:void(0);"><i class="bi bi-eye"></i> View</a></li>
+                                       <li><a href="javascript:void(0);"><i class="bi bi-download"></i> Download</a></li>
+                                       <li><a href="javascript:void(0);" onclick="document.querySelector('main #documents table tr.mp4-file').classList.toggle('hide')"><i class="bi bi-trash2"></i> Delete</a></li>
+                                   </ul>
+                               </div>
+                       </td>
+                    </tr>
+    
+                    <tr class="xsl-file">
+                        <td><i class="bi bi-file-earmark-excel icon"></i> Account Statement.xsl</td>    <td>XSL File</td>   <td>2.38 KB</td>    <td>14 Nov, 2021</td>
+                       <td>
+                           <b class="bi bi-sliders2 action-btn" onclick="document.querySelector('.action4').classList.toggle('active')"></b>
+                               <div class="actions action4">
+                                   <ul>
+                                       <li><a href="javascript:void(0);"><i class="bi bi-eye"></i> View</a></li>
+                                       <li><a href="javascript:void(0);"><i class="bi bi-download"></i> Download</a></li>
+                                       <li><a href="javascript:void(0);" onclick="document.querySelector('main #documents table tr.xsl-file').classList.toggle('hide')"><i class="bi bi-trash2"></i> Delete</a></li>
+                                   </ul>
+                               </div>
+                       </td>
+                    </tr>
+    
+                    <tr class="folder">
+                        <td><i class="bi bi-folder icon"></i> Project Screenshots Collection</td>    <td>Folder</td>   <td>87.24 MB</td>    <td>08 Nov, 2021</td>
+                       <td>
+                           <b class="bi bi-sliders2 action-btn" onclick="document.querySelector('.action5').classList.toggle('active')"></b>
+                               <div class="actions action5">
+                                   <ul>
+                                       <li><a href="#"><i class="bi bi-eye"></i> View</a></li>
+                                       <li><a href="#"><i class="bi bi-download"></i> Download</a></li>
+                                       <li><a href="#" onclick="document.querySelector('main #documents table tr.folder').classList.toggle('hide')"><i class="bi bi-trash2"></i> Delete</a></li>
+                                   </ul>
+                               </div>
+                       </td>
+                    </tr>
+    
+                    <tr class="png-file">
+                        <td><i class="bi bi-filetype-png icon"></i> Logo.png</td>    <td>PNG File</td>   <td>879 KB</td>    <td>02 Nov, 2021</td>
+                       <td>
+                           <b class="bi bi-sliders2 action-btn" onclick="document.querySelector('.action6').classList.toggle('active')"></b>
+                               <div class="actions action6">
+                                   <ul>
+                                       <li><a href="javascript:void(0);"><i class="bi bi-eye"></i> View</a></li>
+                                       <li><a href="javascript:void(0);"><i class="bi bi-download"></i> Download</a></li>
+                                       <li><a href="javascript:void(0);" onclick="document.querySelector('main #documents table tr.png-file').classList.toggle('hide')"><i class="bi bi-trash2"></i> Delete</a></li>
+                                   </ul>
+                               </div>
+                       </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="text-center my-4"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> <b>Loading more...</b></div>
+        </div>
+                <script>
+                    // codes for tab menu
+                        $(document).ready(function(){
+                            $('ul.main-tab-link li').click(function(){
+                                var tab_id = $(this).attr('data-tab');
+
+                                $('ul.main-tab-link li').removeClass('active');
+                                $('.tab-desc').removeClass('active');
+
+                                $(this).addClass('active');
+                                $("#"+tab_id).addClass('active');
+                            })
+                        })
+                    </script>       
+    </div> <!-- container end -->
+ </main>
+                <!-- codes for main section end here -->
+
+<!-- codes for footer section -->
+<footer>
+    <div class="container">
+        <div class="row px-3 text-center text-muted">
+            <div class="col-md-6 text-sm-start"><h6>2022 <i class="bi bi-c-circle"></i> Shop</h6></div>
+            <div class="col-md-6 text-sm-end">
+                <h6>Design & Develop by - <a href="https://www.facebook.com/shahin.alam.j" title="About Shahin" target="_blank"><b>Shahin Alam</b></a></h6>
+            </div>
+        </div>
+    </div>
+</footer>
+</div><!-- body content end here -->
+
+</body>
+</html>

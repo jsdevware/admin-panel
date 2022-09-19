@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@100;200;300;400;500;600;700&family=Cute+Font&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300;400;500;600;700&family=Splash&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+* {margin: 0; padding: 0; box-sizing: border-box;}
+body {font-family: 'Quicksand', sans-serif; height: 100vh;}
+a {text-decoration: none;}
+ul {list-style: none; padding: 0; margin: 0;}
+::-webkit-scrollbar {height: 5px; width: 5px;}
+::-webkit-scrollbar-track {background: #f2f2f2; border-radius: 10px;}
+::-webkit-scrollbar-thumb {background: #ddd; border-radius: 10px;}
+    ::-webkit-scrollbar-thumb:hover {background: pink;}
+button {background: none; border: none;}
+p {font-weight: 500; letter-spacing: 1px;}
+hr {color: #ddd;}
+
+                /* logout alert styling start from here */
+.logout-alert {background: #fff; display: inline-block; position: fixed; top: 30%; left: 50%; transform: translateX(-50%); padding: 20px; text-align: center; border: 1px solid hotpink; border-radius: 5px; display: none; transform-origin: center; transition: 0.5s; z-index: 11;}
+.logout-alert-show {display: block;}
+                /* logout alert styling end here */
+
+                /* preloader styling start from here */
+#preloader {position: fixed; z-index: 1000; overflow: hidden; background: #f4f9ff; width: 100vw; height: 100vh; top: 0; left: 0; animation: preloader 0s 2s forwards;}
+@keyframes preloader {
+    100% {transform: scale(0);}
+}
+#preloader img {position: absolute; width: 20%; left: 40%; top: 50%; transform: translateY(-50%);}              
+                /* preloader styling end here */
+
+                /* menu section styling start from here */
+.menuBar {width: 20%; background: rgb(4, 46, 80); height: 100vh; overflow: scroll; padding: 10px; position: fixed; top: 0; left: 0; z-index: 10; display: none;}
+.menuBar::-webkit-scrollbar {height: 0;}
+.menuBarShow {display: block;}
+.menuBar ul li {padding: 10px;}
+.menuBar ul li a, .menuBar ul li button  {color: #f2f2f2; font-weight: bold;}
+.menuBar ul li a:hover, .menuBar ul li button:hover {color: #ffb3cd;}
+.menuBar ul li a.active {color: #ffb3cd;}
+.menuBar .menuCloseBtn {color: #fff; float: right;}
+                /* menu section styling start from here */
+
+                /* codes for main section start from here */
+main {width: 100%;}
+main .main-chat {display: flex; width: 100%; height: 100vh; position: relative;}
+/* chat people */
+main .chat-people-wrapper {width: 25%; background: honeydew; overflow: scroll; height: 100vh; position: fixed; top: 0; left: 0;}
+main .chat-people-wrapper::-webkit-scrollbar {width: 0px;}
+/* page titlre */
+main .page-title {width: 25%; padding: 10px 0; text-align: center; box-shadow: 0px 1px 5px #ddd; background: #fff; position: fixed; left: 0; right: 0;}
+main .page-title h6 {display: inline-block; font-weight: bold; position: relative;}
+main .page-title h6:before {content: "";  position: absolute;  height: 5px;  width: 20px;   background: hotpink; right: 110%;  top: 50%;  transform: translateY(-50%);  border-radius: 5px;}
+main .page-title h6:after {content: "";  position: absolute;  height: 5px;  width: 20px;   background: hotpink; left: 110%;  top: 50%;  transform: translateY(-50%);  border-radius: 5px;}
+main .page-title button {position: absolute; left: 10px;}
+
+main .chat-people-wrapper .chat-persons {padding-top: 50px;}
+main .chat-people-wrapper .chat-persons ul {display: flex; font-weight: 500; padding: 5px 15px; cursor: pointer;}
+main .chat-people-wrapper .chat-persons ul.active {background: #ffb3cd;}
+main .chat-people-wrapper .chat-persons ul li {padding: 5px;}
+
+/* chat box */
+main .chat-box-wrapper {width: 75%; height: 100%; background: url(../img/chat-bg-pattern.png); overflow: hidden; position: relative; position: fixed; top: 0; right: 0;}
+main .chat-box-wrapper .main-chat {overflow: hidden; height: 100%;}
+main .chat-box-wrapper .main-chat .chats {overflow: scroll; height: 100%; width: 100%;}
+main .chat-box-wrapper #chat-form {width: 100%;  height: 100%;}
+main .chat-box-wrapper .form-box {height: 100%;}
+/* chat box topBar */
+main .chat-box-wrapper .topBar {background: #fff; box-shadow: 1px 0px 5px #ddd; padding: 10px; width: 100%; display: flex; justify-content: space-between;}
+main .chat-box-wrapper .topBar .left-content {display: flex;}
+main .chat-box-wrapper .topBar .left-content button.chat-back {display: none;}
+main .chat-box-wrapper .topBar .left-content .profile-pic {width: 30px; height: 30px; position: relative; margin: 0 15px;}
+main .chat-box-wrapper .topBar .left-content .profile-pic::after {content: "" ; background: #46AB5E; width: 8px; height: 8px; position: absolute; bottom: 0; right: 0; border-radius: 50%;}
+main .chat-box-wrapper .topBar .left-content .name span:first-child {cursor: pointer;}
+main .chat-box-wrapper .topBar .right-content {margin: 0 10px; align-self: center;}
+main .chat-box-wrapper .chat-box {position: relative;  padding: 0 10px 40px;  height: 100%;}
+main .chat-box-wrapper .message-con {overflow-y: scroll;  height: 100%;  width:100%;  vertical-align: text-bottom;}
+main .chat-box-wrapper .message-con::-webkit-scrollbar {display: none;}
+main .chat-box-wrapper .text-field {display: flex;  position: fixed; bottom: 0; right: 0; padding: 10px; background: hotpink; width: 75%;}
+main .chat-box-wrapper .form-container {width: 100%;}
+main .chat-box-wrapper .text-form input[type="text"] {width: 100%;  font-size: 15px;  border-radius: 20px;  border: none;  padding: 5px 10px;  font-weight: 600;}
+main .chat-box-wrapper .text-form input[type="text"]:focus {outline: none;} 
+main .chat-box-wrapper .submit-btn button {color: #fff; font-size: 20px;  text-align: center;  cursor: pointer;  transform: rotate(45deg); padding: 2px 10px;}
+main .chat-box-wrapper .submit-btn::after {content: "Send"; position: absolute; top: -20px; left: 0; font-size: 14px; background: #111111ab; color: #fff; padding: 0 5px; border-radius: 2px; display: none;}
+main .chat-box-wrapper .submit-btn:hover::after {display: block;}
+/* message bubble */
+main .chat-box-wrapper ul#messages li {background-color: #555;  color: #fff;  border-radius: 20px;  padding: 10px;  margin: 10px;  width: fit-content;  word-break: break-all;  font-family: 'Courier New', Courier, monospace;}
+main .chat-box-wrapper ul.client-message li {background-color: #f3f3f9;  color: #555;  border-radius: 20px;  padding: 10px;  margin: 10px;  width: fit-content;  word-break: break-all;  font-family: 'Courier New', Courier, monospace;}
+/* chat profile */
+main .chat-profile-wrapper {width: 25%; height: 100vh; background: #fff; box-shadow: 0px -1px 5px #ddd; position: fixed; right: 0; top: 0; z-index: 9; overflow: scroll; display: none;}
+main .chat-profile-wrapper .banner {background: linear-gradient(#0000006c, #0000006c), url(../img/profile-bg.jpg); background-repeat: no-repeat; background-size: cover; width: 100%; padding: 10px 10px 100px; background-position: center;}
+main .chat-profile-wrapper .profile {text-align: center; margin-top: -40px;}
+main .chat-profile-wrapper .profile span::before {content: ""; width: 10px; height: 10px; background: #46AB5E; position: absolute; left: -15px; top: 50%; transform: translateY(-50%); border-radius: 50%;}
+main .chat-profile-wrapper .profile button {padding: 5px 10px; margin: 5px; border-radius: 3px; background: #f3f3f9; }
+main .chat-profile-wrapper .details {padding: 15px; font-size: 14px;}
+                /* codes for main section end here */
+
+                /* codes for media query start from here */
+/* responsive for tab */
+@media screen and (max-width: 768px){
+
+    .menuBar {width: 25%;}
+    main .chat-people-wrapper {width: 30%;}
+    main .page-title {width: 30%;}
+    main .chat-box-wrapper {width: 70%;}
+    main .chat-box-wrapper .text-field {max-width: 70%;}
+    main .chat-box-wrapper .submit-btn:hover::after {display: none;}
+    main .chat-profile-wrapper {width: 40%;}
+
+}
+
+/* responsive for mobile */
+@media screen and (max-width: 425px){
+
+    .menuBar {width: 55%;}
+    .logout-alert {width: 90%;}
+    .page-title h6 {font-size: 14px;}
+    #preloader img {width: 50%; left: 25%;}
+    main .chat-people-wrapper {width: 100%; display: block;}
+    main .chat-people-wrapper-hide {width: 0%; display: none;}
+    main .page-title {width: 100%;}
+    main .chat-box-wrapper {width: 0%; display: none;}
+    main .chat-box-wrapper-show {width: 100%; display: block;}
+    main .chat-box-wrapper .text-field {min-width: 100%;}
+    main .chat-box-wrapper .topBar button.chat-back {display: block;}
+    main .chat-profile-wrapper {width: 100%;}
+
+}
+                /* codes for media query end here */

@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@100;200;300;400;500;600;700&family=Cute+Font&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300;400;500;600;700&family=Splash&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+* {margin: 0; padding: 0; box-sizing: border-box;}
+body {background:#f3f3f9; font-family: 'Quicksand', sans-serif;}
+a {text-decoration: none;}
+ul {list-style: none; padding: 0; margin: 0;}
+::-webkit-scrollbar {height: 5px; width: 5px;}
+::-webkit-scrollbar-track {background: #f2f2f2; border-radius: 10px;}
+::-webkit-scrollbar-thumb {background: #ddd; border-radius: 10px;}
+    ::-webkit-scrollbar-thumb:hover {background: pink;}
+button {background: none; border: none;}
+p {font-weight: 500; letter-spacing: 1px;}
+hr {color: #ddd;}
+.row {width: 100%; margin: 0;}
+.page-title {background: #fff; padding: 10px 0; text-align: center;}
+.page-title h6 {display: inline-block; font-weight: bold; position: relative;}
+.page-title h6:before {content: "";  position: absolute;  height: 5px;  width: 20px;   background: hotpink; right: 110%;  top: 50%;  transform: translateY(-50%);  border-radius: 5px;}
+.page-title h6:after {content: "";  position: absolute;  height: 5px;  width: 20px;   background: hotpink; left: 110%;  top: 50%;  transform: translateY(-50%);  border-radius: 5px;}
+
+            /* codes for page zooming */
+.pageZoomOut {display: none;}
+:fullscreen .pageZoomIn {display: none;}
+:fullscreen .pageZoomOut {display: block;}
+/* for safari */
+:-webkit-full-screen .pageZoomIn {display: none;}
+:-webkit-full-screen .pageZoomOut {display: block;}
+/* for edge */
+:-ms-fullscreen .pageZoomIn {display: none;}
+:-ms-fullscreen .pageZoomOut {display: block;}
+
+                /* logout alert styling start from here */
+.logout-alert {background: #fff; display: inline-block; position: fixed; top: 30%; left: 50%; transform: translateX(-50%); padding: 20px; text-align: center; border: 1px solid hotpink; border-radius: 5px; display: none; transform-origin: center; transition: 0.5s; z-index: 11;}
+.logout-alert-show {display: block;}
+                /* logout alert styling end here */
+
+                /* preloader styling start from here */
+#preloader {position: fixed; z-index: 1000; overflow: hidden; background: #f4f9ff; width: 100vw; height: 100vh; top: 0; left: 0; animation: preloader 0s 2s forwards;}
+@keyframes preloader {
+    100% {transform: scale(0);}
+}
+#preloader img {position: absolute; width: 20%; left: 40%; top: 50%; transform: translateY(-50%);}              
+                /* preloader styling end here */
+
+                /* menu section styling start from here */
+.menuBar {width: 15%; background: rgb(4, 46, 80); height: 100vh; float: left; overflow: scroll; padding: 10px; position: fixed; z-index: 10;}
+.menuBar::-webkit-scrollbar {height: 0;}
+.menuBarHide {display: none;}
+.menuBar ul li {padding: 10px;}
+.menuBar ul li a, .menuBar ul li button  {color: #f2f2f2; font-weight: bold;}
+.menuBar ul li a:hover, .menuBar ul li button:hover {color: #ffb3cd;}
+.menuBar ul li a.active {color: #ffb3cd;}
+.menuBar .menuCloseBtn {color: hotpink; float: right; display: none;}
+                /* menu section styling start from here */
+
+.bodyContent {width: 85%; float: right; position: relative;}
+.bodyContentHide {width: 100%;}
+
+                /* header section styling start from here */
+header {background: #fff; position: sticky; top: 0; left: 0; z-index: 9; box-shadow: 0px 1px 5px #ddd; padding: 10px 0;}
+header .icon {width: 36px; height: 36px; padding: 5px; border-radius: 50%; text-align: center; cursor: pointer; font-size: 18px; position: relative;}
+    header .icon:hover {background: #f3f3f9; color: #00f;}
+header ul {display: inline-block;}
+header ul:last-child {float: right;}
+header ul li {display: inline-block; padding: 15px;}
+header button.menuBtn {font-size: 25px; transition: all 1s; color: #333;}
+header button.menuBtn:hover {transform: rotateX(180deg); color: hotpink;}
+header button.menuShowBtn {display: none;}
+header form.mainSearch .item {background: #f3f3f9; padding: 10px 15px; border-radius: 5%;}
+header form.mainSearch .item input {border: none; background: none;}
+header form.mainSearch .item input:focus {outline: none;}
+header .searchBar .searchBox {position: absolute; background: #fff; top: 100%; left: 0; width: 100%; padding: 15px; text-align: center; box-shadow: 0px 1px 5px #ddd; transform-origin: top; transition: all 0.5s; transform: scale(0); z-index: 10;}
+header .searchBar .searchBoxShow {transform: scale(1);}
+header .searchBar .searchBox .box {background: #f3f3f9; padding: 15px;}
+header .searchBar .searchBox .box i {width: 10%; float: left;}
+header .searchBar .searchBox .box input {border: none; background: none; width: 90%;}
+header .searchBar .searchBox .box input:focus {outline: none;}
+header .searchBar .icon {display: none;}
+    /* cart wrapper*/
+header .cart-wrapper .icon span {position: absolute; top: 0; right: 0; width: 20px; height: 20px; font-size: 12px; padding: 2px; background: lightgreen; border-radius: 50%;}
+header .cart-wrapper .cart-box {position: absolute; background: #fff; top: 100%; right: 0; width: 315px; height: 400px; box-shadow: 0px 0px 10px #ddd; transform-origin: top right; transition: all 0.5s; transform: scale(0); overflow: hidden;}
+header .cart-wrapper .cart-box .bottomBar {border-top: 1px solid #f2f2f2; padding: 10px; position: fixed; width: 100%; height: 100px; bottom: 0;}
+header .cart-wrapper .cart-box .topBar {height: 60px; border-bottom: 1px solid #f2f2f2;}
+header .cart-wrapper .cart-box .bottomBar a {background: hotpink; color: #333; font-weight: bold; letter-spacing: 1px; border-radius: 5px; display: block; text-align: center; padding: 8px; }
+header .cart-wrapper .cart-box .bottomBar a:hover {opacity: 0.9;}
+header .cart-wrapper .cart-box .item-wrapper {position: fixed; overflow: scroll; height: 240px; top: 60px;}
+header .cart-wrapper .cart-box .item-wrapper .single-item {width: 315px;}
+header .cart-wrapper .cart-box .item-wrapper .single-item-hide {display: none;}
+header .cart-wrapper .cart-box .item-wrapper .single-item:hover {background: #f3f3f9;}
+header .cart-wrapper .cart-box .item-wrapper .single-item ul {float: none;}
+header .cart-wrapper .cart-box .item-wrapper .single-item ul li {display: inline-block;}
+header .cart-wrapper .cart-box .item-wrapper .single-item ul li img {width: 30px; height: 30px; padding: 5px; background: #f3f3f9; border-radius: 50%; margin-top: -20px;}
+header .cart-wrapper .cart-box .item-wrapper .single-item ul li a {font-size: 13px; font-weight: bold; color: #333;}
+    header .cart-wrapper .cart-box .item-wrapper .single-item ul li a:hover {text-decoration: underline;}
+header .cart-wrapper .cart-box .item-wrapper .single-item ul li span {font-size: 11px;}
+header .cart-wrapper .cart-box .item-wrapper .single-item ul li i:hover {cursor: pointer; color: red;}
+header .cart-wrapper .cart-box-show {transform: scale(1);}
+    /* notification wrapper */
+header .notification-wrapper .icon span {position: absolute; top: 0; right: 0; width: 20px; height: 20px; font-size: 12px; padding: 2px; background: rgb(255, 215, 156); border-radius: 50%;}
+header .notification-wrapper .notification-box {position: absolute; background: #fff; top: 100%; right: 0; width: 315px; height: 400px; box-shadow: 0px 0px 10px #ddd; transform-origin: top right; transition: all 0.5s; transform: scale(0); overflow: hidden;}
+header .notification-wrapper .notification-box-show {transform: scale(1);}
+header .notification-wrapper .notification-box .topBar {background: hotpink; height: 100px;}
+header .notification-wrapper .notification-box .topBar ul.tabs{padding: 0px 10px;}
+header .notification-wrapper .notification-box .topBar ul.tabs li{color: #f2f2f2; display: inline-block; padding: 5px 10px; cursor: pointer; font-weight: bold;}
+header .notification-wrapper .notification-box .topBar ul.tabs li.current{background: #f2f2f2; color: #444;}
+header .notification-wrapper .notification-box .main {height: 300px; overflow: scroll; padding: 10px;}
+header .notification-wrapper .notification-box .main .tab-content{display: none;}
+header .notification-wrapper .notification-box .main .tab-content.current{display: inherit;}
+header .notification-wrapper .notification-box .main .item ul {padding: 10px 0;}
+header .notification-wrapper .notification-box .main .item ul.bg-changed {background: #f3f3f9;}
+header .notification-wrapper .notification-box .main .item ul:hover {background: #f3f3f9;}
+header .notification-wrapper .notification-box .main .item ul li {display: inline;}
+header .notification-wrapper .notification-box .main .item ul li img {border-radius: 50%; width: 30px;}
+header .notification-wrapper .notification-box .main .item ul li a {font-size: 13px; font-weight: bold; color: #333;}
+    header .notification-wrapper .notification-box .main .item ul li a:hover {text-decoration: underline;}
+header .notification-wrapper .notification-box .main .item ul li span {font-size: 11px;}
+header .notification-wrapper .notification-box .main .item ul li:first-child {float: left;}
+header .notification-wrapper .notification-box .main .item ul li:last-child {float: right; margin-top: -40px;}
+    /* profile wrapper */
+header .profile-wrapper {background: #f3f3f9; padding: 10px; margin-top: -8px;}
+header .profile-wrapper .button {cursor: pointer; padding: 5px;}
+header .profile-wrapper .button img {width: 35px; border-radius: 50%;}
+header .profile-wrapper .button .name {float: right; padding: 0px 15px;}
+header .profile-wrapper .profile-box-show {transform: scale(1) !important;}
+header .profile-wrapper .profile-box {position: absolute; background: #fff; top: 100%; right: 0; width: 180px; box-shadow: 0px 0px 10px #ddd; transform-origin: top right; transition: all 0.5s; transform: scale(0); padding: 10px 0; font-size: 14px;}
+header .profile-wrapper .profile-box ul {float: none;}
+header .profile-wrapper .profile-box ul li {padding: 5px 20px; display: block; width: 180px;}
+header .profile-wrapper .profile-box ul li a, header .profile-wrapper .profile-box ul li button {color: #333; font-weight: 600; display: block;}
+header .profile-wrapper .profile-box ul li:hover {background: #f3f3f9;}
+                /* header section styling end here */
+
+                /* codes for main section start from here */
+main .card {border: none; border: 1px solid #fff; background: #f3f3f9; display: inherit;}
+/* cover photo */
+main .cover-photo {width: 100%; height: 25vh; overflow: hidden; position: relative; margin-bottom: -50px;}
+main .cover-photo img {width: 100%; height: 100%; -o-object-fit: cover;  object-fit: cover;  -o-object-position: center;  object-position: center;}
+main .cover-photo .overlay {width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)); position: absolute; top: 0; left: 0;}
+/* profile pic */
+main .profile-pic-wrapper {align-items: center; text-align: center;}
+main .pic-holder {position: relative;   width: 100px;  height: 100px;  display: flex;  justify-content: center;  align-items: center;  border: 1px solid #ffb3cd; border-radius: 50%;}
+main .pic-holder .pic {height: 100%; border-radius: 50%; width: 100%;  -o-object-fit: cover;  object-fit: cover;  -o-object-position: center;  object-position: center;}
+main .pic-holder .upload-file-block,
+main .pic-holder .upload-loader {position: absolute; left: 20%; top: 20%;  border-radius: 50%; color: #fff;  width: 60%; height: 60%; font-size: 30px;  background: #0000005d; display: flex;  align-items: center;  justify-content: center;  cursor: pointer; display: none;}
+main .pic-holder:hover > .upload-file-block {display: inherit;}
+/* progress */
+main .progress {padding: 2px; margin-top: 40px; position: relative; overflow: visible; border-radius: 10px; background: hotpink;}
+main .progress::before {content: "30%"; position: absolute; left: 25%; top: -30px; background: rgb(191, 238, 241); font-weight: 500; padding: 2px 5px; border-radius: 3px 3px 3px 3px; z-index: 1;}
+main .progress::after {content: ""; position: absolute; left: 25%; top: -17px; background: linear-gradient(to right, transparent 50%, rgb(191, 238, 241) 50%); width: 10px; height: 10px; transform: rotate(45deg);}
+main .progress .range {background: rgb(191, 238, 241); width: 30%; border-radius: 10px; position: relative;}
+main .progress .range::before {content: ""; width: 7px; height: 7px; background: hotpink; position: absolute; border-radius: 50%; right: 3px; top: 50%; transform: translateY(-50%);}
+/* portfolio */
+main .portfolio h6 button {float: right; background: honeydew; padding: 5px 10px; border-radius: 5px; box-shadow: 1px 1px 5px #ddd;}
+main .portfolio h6 button:hover {box-shadow: inset 1px 1px 5px #ddd;}
+main .portfolio ul li {display: flex; padding-top: 10px;}
+main .portfolio ul li div {align-self: center; padding: 5px;}
+main .portfolio ul li div:last-child {width: 100%;}
+main .portfolio ul li div input {padding: 5px 10px; border: 1px solid #f4f4f4; width: 100%; font-weight: 500;}
+main .portfolio ul li div input:focus {outline: none; border-color: #ddd;}
+/* main tab links*/
+main ul.main-tab-links {display: flex; flex-wrap: wrap;}
+main ul.main-tab-links li {padding: 10px 5px; font-weight: 600; cursor: pointer; width: 25%; text-align: center; border-bottom: 1px solid #eee; font-size: 13px;}
+main ul.main-tab-links li.active {border-bottom: 1px solid #ccc; color: #999;}
+/* main tab desc */
+main .tab-desc {margin-top: 20px; display: none;}
+main .tab-desc.active {display: inherit;}
+main .tab-desc label {font-weight: 600; font-size: 14px; line-height: 40px;}
+main .tab-desc input, main .tab-desc textarea {width: 100%; padding: 10px 20px; border: 1px solid #ddd; background: none; border-radius: 5px; font-size: 14px; font-weight: 500;}
+main .tab-desc input:focus, main .tab-desc textarea:focus {outline: none; border-color: #999;}
+/* personal details tab */
+main #personal-details .submit-btns {text-align: right;}
+main #personal-details .submit-btns button {background: lightgreen; padding: 5px 10px; border-radius: 5px; font-weight: 600; margin: 5px; box-shadow: 0px 0px 3px #999;}
+main #personal-details .submit-btns button:hover {box-shadow: 0px 2px 3px #999;}
+main #personal-details .submit-btns button.cancel {background: honeydew;}
+/* skills */
+main #personal-details .skills-wrapper {border: 1px solid #ddd; padding: 5px 10px; border-radius: 5px; position: relative; font-weight: 500;}
+main #personal-details .skills-wrapper ul.skills-box {display: flex; flex-wrap: wrap;}
+main #personal-details .skills-wrapper ul.skills-box li {padding: 2px 5px; background: #ffb3cd; margin: 2px; border-radius: 3px; cursor: pointer; display: none;}
+main #personal-details .skills-wrapper ul.skills-box li.active {display: block;}
+main #personal-details .skills-wrapper ul.skills-box li:last-child {background: lightcyan; padding: 2px 20px; box-shadow: 0px 0px 5px #ddd;}
+main #personal-details .skills-wrapper ul.skills-selector {background: #fff; box-shadow: 0px 0px 5px #ddd; z-index: 1; position: absolute; top: 105%; left: 0; width: 100%; display: none;}
+main #personal-details .skills-wrapper ul.skills-selector.active {display: block;}
+main #personal-details .skills-wrapper ul.skills-selector li {padding: 5px 10px; cursor: pointer;}
+main #personal-details .skills-wrapper ul.skills-selector li:hover {background: #f3f3f9;}
+main #personal-details .skills-wrapper ul.skills-selector li.hide {display: none;}
+/* change password tab */
+main #change-pwd .device-wrapper {overflow-x: scroll;}
+main #change-pwd ul.login-devices.hide {display: none;}
+main #change-pwd ul.login-devices li {display: flex; white-space: nowrap;}
+main #change-pwd ul.login-devices li.hide {display: none;}
+main #change-pwd ul.login-devices li span {align-self: center; padding: 10px; font-size: 14px; line-height: 25px;}
+main #change-pwd ul.login-devices li span:first-child {color: #333; font-size: 20px; background: #ffd1e1; padding: 5px 7px; border-radius: 3px;}
+main #change-pwd ul.login-devices li span:last-child {margin-left: auto; cursor: pointer; color: hotpink; padding-left: 50px; font-family: 'Courier New', Courier, monospace;}
+/* experience tab */
+main #experience .hide {display: none;}
+main #experience .select-wrapper {display: flex; justify-content: space-between;}
+main #experience .select-wrapper select {width: 40%; padding: 10px 20px; background: none; border: 1px solid #ddd; outline: none; -webkit-appearance: none;}
+main #experience .select-wrapper select:focus {border-color: #999;}
+/* privacy-policy */
+main #privacy-policy {font-size: 14px;}
+main #privacy-policy .item {display: flex; margin-top: 20px;}
+main #privacy-policy .item span:last-child {flex-shrink: 0; align-self: center; padding: 10px 2px;}
+main #privacy-policy .item span button {background: #ff2370; color: #fff; padding: 2px 5px; border-radius: 3px;}
+main #privacy-policy input[type="checkbox"] {position: relative;    width: 30px; padding: 0;    background: gainsboro;    -webkit-appearance: none;    height: 15px;    background: #ddd;    outline: none;    border-radius: 30px; border: none;  transition: 0.5s;}
+main #privacy-policy input[type="checkbox"]:checked {background:#ffb3cd;}
+main #privacy-policy input[type="checkbox"]:focus {border: none; box-shadow: none;}
+main #privacy-policy input[type="checkbox"]:before {content: '';    position: absolute;    width: 15px;    height: 15px;   left: 0;    background: #fff;   box-shadow: 0px 0px 5px gainsboro;   border-radius: 50%;  top: 50%;  transform: translateY(-50%);transition: 0.5s;}
+main #privacy-policy input[type="checkbox"]:checked:before {left: 20px;}
+                /* codes for main section end here */
+
+                /* codes for footer start from here */
+footer {background: #fff; padding: 20px 0; box-shadow: 0px -2px 5px #ddd;}
+footer a {color: hotpink;}
+                /* codes for footer end here */
+
+                /* codes for media query start from here */
+/* responsive for tab */
+@media screen and (max-width: 768px){
+
+    .menuBar {display: none;}
+    .menuBarShow {display: block; width: 25%;}
+    .bodyContent {width: 100%;}
+    header button.menuShowBtn {display: block;}
+    header button.menuHideBtn {display: none;}
+    .menuBar .menuCloseBtn {display: block;}
+    header .profile-wrapper {background: none;}
+    header .profile-wrapper .name {display: none;}
+    main #privacy-policy .item {flex-wrap: wrap;}
+
+}
+
+/* responsive for mobile */
+@media screen and (max-width: 425px){
+
+    .logout-alert {width: 90%;}
+    .menuBarShow {width: 60%;}
+    header .searchBar .icon {display: block;}
+    header form.mainSearch { display: none;}
+    header .profile-wrapper img {width: 30px;}
+    header ul li {padding: 5px 2px;}
+    header .cart-wrapper .cart-box {right: -358%; transform-origin: top;}
+    header .notification-wrapper .notification-box {right: -235%; transform-origin: top;}
+    .page-title h6 {font-size: 14px;}
+    #preloader img {width: 50%; left: 25%;}
+    main ul.main-tab-links li {width: 50%;}
+
+}
+                /* codes for media query end here */

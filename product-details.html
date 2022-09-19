@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Shop Admin</title>
+    <link rel="shortcut icon" href="img/fav.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/product-details.css">
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+                <!-- alert for log out start from here -->
+<div id="logout-alert-wrapper">
+    <div class="logout-alert">
+        <h4 class="mb-4">Are you sure you want to log out?</h4>
+        <button class="btn btn-danger me-4" onclick="document.querySelector('.logout-alert').classList.remove('logout-alert-show')">Cancel</button>
+        <button class="btn btn-success" onclick='window.location.replace("logout.html")'>Log Out</button>
+    </div>
+</div>
+                <!-- alert for log out end here -->
+
+<!-- page preloader -->
+<div id="preloader" class="preloader">
+    <img src="img/preloader.gif" alt="preloader">
+</div>
+
+                <!-- codes for menu section start from here -->
+<div class="menuBar">
+    <h4 class="menuCloseBtn bi bi-x-lg btn" onclick='document.querySelector(".menuBar").classList.remove("menuBarShow");'></h4>
+    <div class="menuBarLogo text-center"><a href="dashboard.html"><img src="img/logo.svg" alt="Logo" width="60%"></a></div>
+    <ul class="menu-items mt-4">
+        <li class="menu-link"><a href="dashboard.html"><i class="bi bi-command"></i> Dashboard</a></li>
+        <li class="menu-link"><a href="profile.html"><i class="bi bi-person"></i> Profile</a></li>
+        <li class="menu-link"><a href="settings.html"><i class="bi bi-gear"></i> Settings</a></li>
+        <li class="menu-link"><a href="chat.html"><i class="bi bi-chat-dots"></i> Chat</a></li>
+        <li class="menu-link"><a href="tasks.html"><i class="bi bi-sliders"></i> Tasks</a></li>
+        <li class="menu-link"><a href="faq.html"><i class="bi bi-info-circle"></i> Help</a></li>
+        <li class="menu-link"><a href="product-details.html" class="active"><i class="bi bi-truck"></i> Checkout</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-ui-checks"></i> Base UI</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-ui-checks-grid"></i> Advanced UI</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-columns"></i> Widgets</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-file-text"></i> Forms</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-grid-3x3"></i> Tables</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-card-text"></i> Charts</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-emoji-smile"></i> Icons</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-globe2"></i> Maps</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-bar-chart"></i> Multi Level</a></li>
+        <li class="menu-link"><button onclick="document.querySelector('.logout-alert').classList.add('logout-alert-show')"><i class="bi bi-box-arrow-right"></i> Log Out</button></li>
+    </ul>
+</div>
+                <!-- codes for menu section end here -->
+
+<div class="bodyContent">
+
+                    <!-- codes for header section start from here -->
+<header id="header">
+    <div class="container">
+        <ul>
+            <li>
+                <button class="menuBtn menuHideBtn bi bi-arrow-left" onclick="menuHideFunction()"></button>
+                <button class="menuBtn menuShowBtn bi bi-list-nested" onclick='document.querySelector(".menuBar").classList.add("menuBarShow");'></button>
+                        <script>
+                            // script for hide menu
+                                function menuHideFunction(){
+                                    document.querySelector(".menuHideBtn").classList.toggle("bi-list-nested");
+                                    document.querySelector(".menuBar").classList.toggle("menuBarHide");
+                                    document.querySelector(".bodyContent").classList.toggle("bodyContentHide");
+                                };
+                        </script>
+            </li>
+            <li>
+                <form action="" class="mainSearch">
+                    <div class="item">
+                        <i class="bi bi-search"></i> <input type="search" name="search" id="search" placeholder="Search">
+                    </div>
+                </form>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <div class="searchBar">
+                    <div class="icon" onclick="document.querySelector('.searchBox').classList.toggle('searchBoxShow')"><i class="bi bi-search"></i></div>
+                    <div class="searchBox">
+                        <div class="box">
+                            <form action="">
+                                <i class="bi bi-search"></i> <input type="search" name="search" id="search" placeholder="Search...">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        <!-- codes for zooming the page-->
+            <li>
+                <div class="icon"> <i class="bi bi-fullscreen pageZoomIn" title="Zoom In Page" onclick="pageZoomIn()"></i> <i class="bi bi-fullscreen-exit pageZoomOut" title="Zoom Out Page" onclick="pageZoomOut()"></i></div>
+                        <script>
+                        //codes for page zooming
+                            var elem = document.documentElement;
+                            function pageZoomIn() {
+                            if (elem.requestFullscreen) {
+                                elem.requestFullscreen();
+                            } else if (elem.webkitRequestFullscreen) { 
+                                elem.webkitRequestFullscreen(); /* for Safari */
+                            } else if (elem.msRequestFullscreen) { 
+                                elem.msRequestFullscreen(); /* for Edge */
+                            }
+                            };
+
+                            function pageZoomOut() {
+                            if (document.exitFullscreen) {
+                                document.exitFullscreen();
+                            } else if (document.webkitExitFullscreen) { 
+                                document.webkitExitFullscreen(); /* for Safari */
+                            } else if (document.msExitFullscreen) { 
+                                document.msExitFullscreen(); /* for Edge */
+                            }
+                            };
+                        </script>
+            </li>
+        <!-- codes for cart wrapper -->
+            <li>
+                <div class="cart-wrapper position-relative">
+                    <div class="icon" title="My Cart" onclick="document.querySelector('.cart-box').classList.toggle('cart-box-show')"> <i class="bi bi-cart4"></i> <span>5</span></div>
+                    <div class="cart-box">
+                        <div class="topBar">
+                            <h5 class="p-3">
+                                <b>My cart</b>
+                                <span class="float-end fs-6 bg-warning rounded p-1">5 Items</span>
+                            </h5>
+                        </div>
+                        <div class="item-wrapper">
+                            <div class="single-item item1">
+                                <ul>
+                                    <li> <img src="img/tshirt-red.png" alt="t-shirt"> </li>
+                                    <li>
+                                        <a href="product-details.html">Branded T-Shirt</a> <br>
+                                        <span>Quantity : 10 x $32</span>
+                                    </li>
+                                    <li>$320 <i class="bi bi-x-lg ms-2" onclick="document.querySelector('.item1').classList.add('single-item-hide')"></i></li>
+                                </ul>
+                            </div>
+                            <div class="single-item item2">
+                                <ul>
+                                    <li> <img src="img/chair.png" alt="chair"> </li>
+                                    <li>
+                                        <a href="product-details.html">Bentwood Chair</a> <br>
+                                        <span>Quantity : 5 x $18</span>
+                                    </li>
+                                    <li>$90 <i class="bi bi-x-lg ms-2" onclick="document.querySelector('.item2').classList.add('single-item-hide')"></i></li>
+                                </ul>
+                            </div>
+                            <div class="single-item item3">
+                                <ul>
+                                    <li> <img src="img/helmet.png" alt="helmet"> </li>
+                                    <li>
+                                        <a href="product-details.html">Stillbird Helmet</a> <br>
+                                        <span>Quantity : 2 x $495</span>
+                                    </li>
+                                    <li>$990 <i class="bi bi-x-lg ms-2" onclick="document.querySelector('.item3').classList.add('single-item-hide')"></i></li>
+                                </ul>
+                            </div>
+                            <div class="single-item item4">
+                                <ul>
+                                    <li> <img src="img/paper-cup.png" alt="Cup"> </li>
+                                    <li>
+                                        <a href="product-details.html">Borosil Paper Cup</a> <br>
+                                        <span>Quantity : 3 x $250</span>
+                                    </li>
+                                    <li>$750 <i class="bi bi-x-lg ms-2" onclick="document.querySelector('.item4').classList.add('single-item-hide')"></i></li>
+                                </ul>
+                            </div>
+                            <div class="single-item item5">
+                                <ul>
+                                    <li> <img src="img/tshirt-gray.png" alt="t-shirt"> </li>
+                                    <li>
+                                        <a href="product-details.html">Gray T-Shirt</a> <br>
+                                        <span>Quantity : 1 x $147</span>
+                                    </li>
+                                    <li>$147 <i class="bi bi-x-lg ms-2" onclick="document.querySelector('.item5').classList.add('single-item-hide')"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="bottomBar">
+                            <h6 class="text-muted mb-3">Total : <span class="text-dark float-end">$3399.00</span></h6>
+                            <a href="product-details.html">Checkout</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        <!-- codes for notification wrapper-->
+            <li>
+                <div class="notification-wrapper position-relative">
+                    <div class="icon" title="Notifications" onclick="document.querySelector('.notification-box').classList.toggle('notification-box-show')"> <i class="bi bi-bell"></i> <span>9+</span></div>
+                    <div class="notification-box">
+                        <div class="topBar">
+                            <h5 class="p-3">
+                                <b>Notifications</b>
+                                <span class="float-end fs-6 bg-primary text-light rounded p-1">4 New</span>
+                            </h5>
+                            <ul class="tabs float-start">
+                                <li class="tab-link current" data-tab="tab-1">All (10)</li>
+                                <li class="tab-link" data-tab="tab-2">Messages (5)</li>
+                                <li class="tab-link" data-tab="tab-3">Alerts</li>
+                            </ul>
+                        </div>
+                        <div class="main">
+                        <!-- notifications -->
+                            <div id="tab-1" class="tab-content current">
+                                <div class="item">
+                                    <ul class="ul1">
+                                        <li><div> <i class="bi bi-browser-chrome"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> JUST 30 SEC AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul1').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul2">
+                                        <li><div> <i class="bi bi-browser-edge"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 48 MIN AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul2').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul3">
+                                        <li><div> <i class="bi bi-browser-firefox"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 2 HRS AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul3').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul4">
+                                        <li><div> <i class="bi bi-browser-safari"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 4 HRS AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul4').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul5">
+                                        <li><div> <i class="bi bi-browser-chrome"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> JUST 30 SEC AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul5').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul6">
+                                        <li><div> <i class="bi bi-browser-edge"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 48 MIN AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul6').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul7">
+                                        <li><div> <i class="bi bi-browser-firefox"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 2 HRS AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul7').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul8">
+                                        <li><div> <i class="bi bi-browser-safari"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 4 HRS AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul8').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul9">
+                                        <li><div> <i class="bi bi-browser-firefox"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 2 HRS AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul9').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul10">
+                                        <li><div> <i class="bi bi-browser-safari"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 4 HRS AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul10').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="text-center py-3"><a href="#" class="btn btn-outline-success mt-4">View All Notifications <i class="bi bi-arrow-right"></i></a></div>
+                            </div>
+                        <!-- messages -->
+                            <div id="tab-2" class="tab-content">
+                                <div class="item">
+                                    <ul class="ul11">
+                                        <li><div> <img src="img/profile.jpg" alt="user"> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> JUST 30 SEC AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul11').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul12">
+                                        <li><div> <img src="img/user1.jpg" alt="user"> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> JUST 30 SEC AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul12').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul13">
+                                        <li><div> <img src="img/user2.jpg" alt="user"> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 48 MIN AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul13').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul14">
+                                        <li><div> <img src="img/user3.jpg" alt="user"> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 2 HRS AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul14').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul15">
+                                        <li><div> <img src="img/user4.jpg" alt="user"> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 4 HRS AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul15').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="text-center py-3"><a href="#" class="btn btn-outline-success mt-4">View All Messages <i class="bi bi-arrow-right"></i></a></div>
+                            </div>
+                        <!-- alerts -->
+                            <div id="tab-3" class="tab-content text-center">
+                                <img src="img/bell.png" alt="bell" width="100px" class="my-5">
+                                <h4>Hey! You have no any alerts</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                            <script>
+                            // codes for tab menu
+                                $(document).ready(function(){
+                                    $('ul.tabs li').click(function(){
+                                        var tab_id = $(this).attr('data-tab');
+
+                                        $('ul.tabs li').removeClass('current');
+                                        $('.tab-content').removeClass('current');
+
+                                        $(this).addClass('current');
+                                        $("#"+tab_id).addClass('current');
+                                    })
+                                })
+                            </script>
+            </li>
+        <!-- codes for profile wrapper-->
+            <li>
+                <div class="profile-wrapper position-relative">
+                    <div class="button" onclick="document.querySelector('.profile-box').classList.toggle('profile-box-show')">
+                        <img src="img/profile.jpg" alt="Profile">
+                        <div class="name">
+                            <b>Anna Adame</b> <br>
+                            <span>Founder</span>
+                        </div>
+                    </div>
+                    <div class="profile-box">
+                        <h6 class="text-muted px-3">Welcome Anna!</h6>
+                        <ul>
+                            <li><a href="profile.html"><i class="bi bi-person-circle"></i> Profile</a></li>
+                            <li><a href="chat.html"><i class="bi bi-chat-left-dots"></i> Messages</a></li>
+                            <li><a href="tasks.html"><i class="bi bi-clipboard-check"></i> Taskboard</a></li>
+                            <li><a href="faq.html"><i class="bi bi-info-circle"></i> Help</a></li>
+                        </ul>
+                        <hr>
+                        <ul>
+                            <li><a href="profile.html"><i class="bi bi-cash-coin"></i> Balance : $5971.67</a></li>
+                            <li><a href="settings.html"><i class="bi bi-gear"></i> Settings <span class="float-end px-1 rounded bg-info">New</span></a></li>
+                            <li><a href="#"><i class="bi bi-lock"></i> Lock Screen</a></li>
+                            <li><button onclick="document.querySelector('.logout-alert').classList.add('logout-alert-show')"><i class="bi bi-box-arrow-right"></i> Log Out</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</header>
+                <!-- codes for header section end here -->
+
+                <!-- codes for main section start from here -->
+<main>
+<!-- page title  -->
+    <div class="page-title">
+        <h6>CHECKOUT</h6>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8  py-3">
+                <div class="order-content">
+                    <ul class="my-tabs">
+                        <li class="tab-link personal-li current" data-tab="personal-tab"><div class="icon"><i class="bi bi-person"></i></div> <div>Persoal Info</div></li>
+                        <li class="tab-link shipping-li" data-tab="shipping-tab"><div class="icon"><i class="bi bi-truck"></i></div> <div>Shipping Info</div></li>
+                        <li class="tab-link payment-li" data-tab="payment-tab"><div class="icon"><i class="bi bi-wallet2"></i></div> <div>Payment Info</div></li>
+                        <li class="tab-link finish-li" data-tab="finish-tab"><div class="icon"><i class="bi bi-check"></i></div> <div>Finish</div></li>
+                                <script>
+                                    // codes for tab menu
+                                        $(document).ready(function(){
+                                            $('ul.my-tabs li').click(function(){
+                                                var tab_id = $(this).attr('data-tab');
+
+                                                $('ul.my-tabs li').removeClass('current');
+                                                $('.my-tab-content').removeClass('current');
+
+                                                $(this).addClass('current');
+                                                $("#"+tab_id).addClass('current');
+                                            })
+                                        })
+                                    </script>
+                    </ul>
+                <!-- personal info -->
+                    <div id="personal-tab" class="my-tab-content personal-info px-2 py-3 current">
+                        <h6><b>Billing Information</b></h6>
+                        <p class="mb-3">Please fill all information below</p>
+                        <form action="">
+                            <div class="self-input">
+                                <div class="item">
+                                    <label for="fName"><b>First Name</b></label> <br>
+                                        <input type="text" placeholder="Enter first name" required>
+                                </div>
+                                <div class="item">
+                                    <label for="lName"><b>Last Name</b></label> <br>
+                                        <input type="text" placeholder="Enter last name" required>
+                                </div>
+                                <div class="item">
+                                    <label for="email"><b>Email</b></label> <br>
+                                        <input type="email" placeholder="Enter a valid email" required>
+                                </div>
+                                <div class="item">
+                                    <label for="phone"><b>Phone (Optional)</b></label> <br>
+                                        <input type="tel" placeholder="Enter phone no.">
+                                </div>
+                            </div>
+                            <div class="px-2">
+                                <label for="texarea"><b>Address</b></label>
+                                <textarea name="address-box" id="addressBox" rows="4" placeholder="Enter full address"></textarea>
+                            </div>
+                            <div class="address-input">
+                                <div class="item">
+                                    <label for="country"><b>Country</b></label> <br>
+                                    <select>
+                                        <option value="Select Country">Select Country</option>
+                                        <option>United States</option>
+                                    </select>
+                                </div>
+                                <div class="item">
+                                    <label for="states"><b>State</b></label> <br>
+                                    <select name="states" id="states">
+                                        <option value="Select States">Select States</option>
+                                        <option>Alabama</option>
+                                        <option>Alaska</option>
+                                        <option>American Samoa</option>
+                                        <option>California</option>
+                                        <option>Colorado</option>
+                                        <option>District Of Columbia</option>
+                                        <option>Florida</option>
+                                        <option>Georgia</option>
+                                        <option>Guam</option>
+                                        <option>Hawaii</option>
+                                        <option>Idaho</option>
+                                        <option>Kansas</option>
+                                        <option>Louisiana</option>
+                                        <option>Montana</option>
+                                        <option>Nevada</option>
+                                        <option>New Jersey</option>
+                                        <option>New Mexico</option>
+                                        <option>New York</option>
+                                    </select>
+                                </div>
+                                <div class="item">
+                                    <label for="zip-code"><b>Zip Code</b></label> <br>
+                                        <input type="text" placeholder="Enter zip code" required>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="text-center text-md-end p-3"><button class="goToShipping btn btn-secondary" data-tab="shipping-tab">Proceed to Shipping <i class="bi bi-truck"></i></button></div>
+                                <script>
+                                    // for go to shipping tab
+                                    $(document).ready(function(){
+                                        $('.goToShipping').click(function(){
+                                            $('ul.my-tabs li.personal-li').removeClass('current');
+                                            $('.personal-info').removeClass('current');
+
+                                            $('ul.my-tabs li.shipping-li').addClass('current');
+                                            $('.shipping-info').addClass('current');
+                                        })
+                                    })
+                                </script>
+                    </div>
+                <!-- shipping info -->
+                    <div id="shipping-tab" class="my-tab-content shipping-info px-2 py-3">
+                        <h6><b>Shipping Information</b></h6>
+                        <p class="mb-3">Please fill all information below</p>
+                        <div class="address-adding">
+                            <span>Saved Address</span>
+                            <button title="Add a new address" onclick="document.querySelector('.address-edit-box-wrapper').classList.add('address-edit-box-show')">Add Address</button>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 p-2">
+                                <div class="card card1 active p-3 btn text-start">
+                                    <h6 class="text-muted"><b>HOME ADDRESS</b> <i class="bi bi-check-circle-fill cardIcon1 active"></i></h6>
+                                    <h6 class="mt-4 mb-2"><b>Marcus Alfaro</b></h6>
+                                    <span class="text-muted">4739 Bubby Drive Austin, TX 78729  <br>
+                                        Mo. 012-345-6789</span>
+                                </div>
+                                <div class="address-box-buttons">
+                                    <button onclick="document.querySelector('.address-edit-box-wrapper').classList.add('address-edit-box-show')"><i class="bi bi-pencil-fill"></i> Edit</button>
+                                    <button onclick="document.querySelector('.delete-box-wrapper').classList.add('delete-box-show')"><i class="bi bi-trash"></i> Remove</button>
+                                </div>
+                            </div>
+                            <div class="col-md-5 p-2">
+                                <div class="card card2 p-3 btn text-start">
+                                    <h6 class="text-muted"><b>OFFICE ADDRESS</b> <i class="bi bi-check-circle-fill cardIcon2"></i></h6>
+                                    <h6 class="mt-4 mb-2"><b>James Honda</b></h6>
+                                    <span class="text-muted">4739 Bubby Drive Austin, TX 78729  <br>
+                                        Mo. 012-345-6789</span>
+                                </div>
+                                <div class="address-box-buttons">
+                                    <button onclick="document.querySelector('.address-edit-box-wrapper').classList.add('address-edit-box-show')"><i class="bi bi-pencil-fill"></i> Edit</button>
+                                    <button onclick="document.querySelector('.delete-box-wrapper').classList.add('delete-box-show')"><i class="bi bi-trash"></i> Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="my-3 text-muted"><b>Shipping Method</b></h6>
+                        <div class="row shipping-method">
+                            <div class="col-md-6 py-3">
+                                <div class="card card3 px-3 py-4 btn text-start">
+                                    <i class="bi bi-check-circle-fill cardIcon3"></i>
+                                    <ul>
+                                        <li>
+                                            <b>Free Delivery</b> <br>
+                                            <span>Expected Delivery 3 to 5 Days</span>
+                                        </li>
+                                        <li class="price">Free</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6 py-3">
+                                <div class="card card4 px-3 py-4 btn text-start active">
+                                    <i class="bi bi-check-circle-fill cardIcon4 active"></i>
+                                    <ul>
+                                        <li class="desc">
+                                            <b>Express Delivery</b> <br>
+                                            <span>Delivery within 24 hours</span>
+                                        </li>
+                                        <li class="price">$24.99</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                                <script>
+                                    // for select card1
+                                    document.querySelector(".card1").addEventListener("click", function(){
+                                    document.querySelector(".card1").classList.add("active");
+                                    document.querySelector(".card2").classList.remove("active");
+                                    document.querySelector(".cardIcon1").classList.add("active");
+                                    document.querySelector(".cardIcon2").classList.remove("active");
+                                    });
+                                    // for select card2
+                                    document.querySelector(".card2").addEventListener("click", function(){
+                                        document.querySelector(".card2").classList.add("active");
+                                        document.querySelector(".card1").classList.remove("active");
+                                        document.querySelector(".cardIcon2").classList.add("active");
+                                        document.querySelector(".cardIcon1").classList.remove("active");
+                                    });
+                                        // for select card3
+                                        document.querySelector(".card3").addEventListener("click", function(){
+                                        document.querySelector(".card3").classList.add("active");
+                                        document.querySelector(".card4").classList.remove("active");
+                                        document.querySelector(".cardIcon3").classList.add("active");
+                                        document.querySelector(".cardIcon4").classList.remove("active");
+                                    });
+                                    // for select card4
+                                    document.querySelector(".card4").addEventListener("click", function(){
+                                        document.querySelector(".card4").classList.add("active");
+                                        document.querySelector(".card3").classList.remove("active");
+                                        document.querySelector(".cardIcon4").classList.add("active");
+                                        document.querySelector(".cardIcon3").classList.remove("active");
+                                    });
+                                </script>
+                        <div class="text-center text-md-end p-3"><button class="goToPayment btn btn-secondary" data-tab="shipping-tab">Continue to Payment <i class="bi bi-wallet2"></i></button></div>
+                                    <script>
+                                        // for go to payment tab
+                                        $(document).ready(function(){
+                                            $('.goToPayment').click(function(){
+                                                $('ul.my-tabs li.shipping-li').removeClass('current');
+                                                $('.shipping-info').removeClass('current');
+
+                                                $('ul.my-tabs li.payment-li').addClass('current');
+                                                $('.payment-info').addClass('current');
+                                            })
+                                        })
+                                    </script>
+                    </div>
+                <!-- payment info -->
+                    <div id="payment-tab" class="my-tab-content payment-info px-2 py-3">
+                        <h6><b>Payment Selection</b></h6>
+                        <p class="mb-3">Please select and enter your billing information</p>
+                        <ul class="payment-method-link">
+                            <li class="paypal-link payment-link" data-tab="paypal-tab"><i class="bi bi-paypal me-2 text-muted"></i> Paypal <b class="bi bi-check-circle-fill"></b></li>
+                            <li class="card-link payment-link active" data-tab="card-tab"><i class="bi bi-credit-card me-2 text-muted"></i> Credit/Debit Card <b class="bi bi-check-circle-fill active"></b></li>
+                            <li class="cash-link payment-link" data-tab="cash-tab"><i class="bi bi-cash-coin me-2 text-muted"></i> Cash on Delivery <b class="bi bi-check-circle-fill"></b></li>
+                                        <script>
+                                            // for paypal tab
+                                            document.querySelector(".paypal-link").addEventListener("click", function(){
+                                                document.querySelector(".paypal-link").classList.add("active");
+                                                document.querySelector(".paypal-link b").classList.add("active");
+                                                document.querySelector(".card-link").classList.remove("active");
+                                                document.querySelector(".card-link b").classList.remove("active");
+                                                document.querySelector(".cash-link").classList.remove("active");
+                                                document.querySelector(".cash-link b").classList.remove("active");
+                                                document.querySelector("#paypal-tab").classList.add("active");
+                                                document.querySelector("#card-tab").classList.remove("active");
+                                                document.querySelector("#cash-tab").classList.remove("active");
+                                            });
+                                            // for card tab
+                                            document.querySelector(".card-link").addEventListener("click", function(){
+                                                document.querySelector(".card-link").classList.add("active");
+                                                document.querySelector(".card-link b").classList.add("active");
+                                                document.querySelector(".paypal-link").classList.remove("active");
+                                                document.querySelector(".paypal-link b").classList.remove("active");
+                                                document.querySelector(".cash-link").classList.remove("active");
+                                                document.querySelector(".cash-link b").classList.remove("active");
+                                                document.querySelector("#card-tab").classList.add("active");
+                                                document.querySelector("#paypal-tab").classList.remove("active");
+                                                document.querySelector("#cash-tab").classList.remove("active");
+                                            });
+                                            // for cash tab
+                                            document.querySelector(".cash-link").addEventListener("click", function(){
+                                                document.querySelector(".cash-link").classList.add("active");
+                                                document.querySelector(".cash-link b").classList.add("active");
+                                                document.querySelector(".paypal-link").classList.remove("active");
+                                                document.querySelector(".paypal-link b").classList.remove("active");
+                                                document.querySelector(".card-link").classList.remove("active");
+                                                document.querySelector(".card-link b").classList.remove("active");
+                                                document.querySelector("#cash-tab").classList.add("active");
+                                                document.querySelector("#paypal-tab").classList.remove("active");
+                                                document.querySelector("#card-tab").classList.remove("active");
+                                            });
+                                        </script>
+                        </ul>
+                        <div id="paypal-tab" class="payment-tab py-4">
+                            <h6>Sorry! This payment method may not allow on your country.</h6>
+                        </div>
+                        <div id="card-tab" class="payment-tab py-4 active">
+                            <div class="card p-3">
+                                <form action="">
+                                    <div class="item">
+                                        <label for="name">Name on card</label> <br>
+                                        <input type="text" placeholder="Enter name" required> <br>
+                                        <span style="font-size: 12px;">Full name as displayed on card</span>
+                                    </div>
+                                    <div class="item">
+                                        <label for="card-number">Credit card number</label> <br>
+                                        <input type="text" placeholder="xxxx xxxx xxxx xxxx" required>
+                                    </div>
+                                    <div class="item">
+                                        <label for="expiration">Expiration</label> <br>
+                                        <input type="text" placeholder="MM/YY" required>
+                                    </div>
+                                    <div class="item">
+                                        <label for="cvv">CVV</label> <br>
+                                        <input type="text" placeholder="xxx" required>
+                                    </div>
+                                </form>
+                            </div>
+                            <span class="bi bi-shield-lock text-muted me-4" style="font-size: 13px;"> Your transaction is secured with SSL encryption</span>
+                        </div>
+                        <div id="cash-tab" class="payment-tab py-4">
+                            <h6>Oops! offer not available.</h6>
+                        </div>
+
+                        <div class="text-center text-md-end p-3"><button class="goToFinish btn btn-secondary" data-tab="shipping-tab">Complete Order <i class="bi bi-check-circle-fill"></i></button></div>
+                                    <script>
+                                        // for go to finish tab
+                                        $(document).ready(function(){
+                                            $('.goToFinish').click(function(){
+                                                $('ul.my-tabs li.payment-li').removeClass('current');
+                                                $('.payment-info').removeClass('current');
+
+                                                $('ul.my-tabs li.finish-li').addClass('current');
+                                                $('.finish-info').addClass('current');
+                                            })
+                                        })
+                                    </script>
+                    </div>
+                <!-- finish -->
+                    <div id="finish-tab" class="my-tab-content finish-info">
+                        <div class="content py-5 px-2 text-center overflow-hidden">
+                            <img src="img/balloons.gif" alt="Balloons" width="250px">
+                            <h6><b>Thank You ! Your Order is Completed !</b></h6>
+                            <p>You will receive an order confirmation email with details of your order</p>
+                            <h3 class="mt-3"><b>Order ID: VZ2451</b></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 py-3">
+                <div class="summary">
+                    <h6 class="p-3"><b>Order Summary</b></h6>
+                    <ul class="capt">
+                        <li>Product</li>
+                        <li>Product Info</li>
+                        <li>Price</li>
+                    </ul>
+                    <ul>
+                        <li><img src="img/tshirt-pink.png" alt="T-Shirt"></li>
+                        <li>
+                            <b>Sweatshirt for men (Pink)</b> <br>
+                            <span>$119.99 x 2</span>
+                        </li>
+                        <li><h5>$220</h5></li>
+                    </ul>
+                    <ul>
+                        <li><img src="img/watch.png" alt="watch"></li>
+                        <li>
+                            <b>Noise Evolve Smartwatch</b> <br>
+                            <span>$94.99 x1</span>
+                        </li>
+                        <li><h5>$95</h5></li>
+                    </ul>
+                    <ul>
+                        <li><img src="img/glass.png" alt="glass"></li>
+                        <li>
+                            <b>350 ml Glass Grocery Container<br>
+                            <span>$24.99 x 1</span>
+                        </li>
+                        <li><h5>$25</h5></li>
+                    </ul>
+                    <div class="desc px-3">
+                        <h6 class="my-4 fw-bold">sub Total : <span class="float-end">$359.96</span></h6>
+                        <h6 class="my-4">Discount : <span class="float-end">-$45.27</span></h6>
+                        <h6 class="my-4">Shipping Charge : <span class="float-end">$24.99</span></h6>
+                        <h6 class="my-4">Estimated Tax (12%) : <span class="float-end">$18.20</span></h6>
+                    </div>
+                    <div class="p-2" style="background: #f3f3f9;">
+                        <b>Total (USD) <span class="float-end">$357.88</span></b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+                <!-- codes for main section end here -->
+
+            <!-- codes for footer section -->
+<footer>
+    <div class="container">
+        <div class="row px-3 text-center text-muted">
+            <div class="col-md-6 text-sm-start"><h6>2022 <i class="bi bi-c-circle"></i> Shop</h6></div>
+            <div class="col-md-6 text-sm-end">
+                <h6>Design & Develop by - <a href="https://www.facebook.com/shahin.alam.j" title="About Shahin" target="_blank"><b>Shahin Alam</b></a></h6>
+            </div>
+        </div>
+    </div>
+</footer>
+</div><!-- body content end here -->
+
+<!-- delete box -->
+    <div class="delete-box-wrapper">
+        <div class="delete-box">
+            <img src="img/delete.gif" alt="delete-icon" width="200px">
+            <h6 class="my-3"><b>Are you sure you want to remove this address ?</b></h6>
+            <div class="buttons">
+                <button class="cancelBtn" onclick="document.querySelector('.delete-box-wrapper').classList.remove('delete-box-show')">Cancel</button>
+                <button class="deleteBtn" onclick="alert('function not found !')">Remove</button>
+            </div>
+        </div>
+    </div>
+
+<!-- address edit box -->
+<div class="address-edit-box-wrapper">
+    <div class="address-edit-box">
+        <h6>
+            <b class="text-muted">Address</b>
+            <span class="float-end btn" onclick="document.querySelector('.address-edit-box-wrapper').classList.remove('address-edit-box-show')"><i class="bi bi-x-lg"></i></span>
+        </h6>
+        <form action="">
+            <div class="item">
+                <label for="name"><b>Name</b></label> <br>
+                <input type="text" placeholder="Enter name" required>
+            </div>
+            <div class="item">
+                <label for="address"><b>Address</b></label> <br>
+                <input type="text" placeholder="Enter address" required>
+            </div>
+            <div class="item">
+                <label for="phone"><b>Phone</b></label> <br>
+                <input type="text" placeholder="Enter phone no." required>
+            </div>
+            <div class="item">
+                <label for="address_type"><b>Address Type</b></label> <br>
+                <select name="address_type" id="address_type">
+                    <option value="home">Home (7am to 10pm)</option>
+                    <option value="office">Office (11am to 7pm)</option>
+                </select>
+            </div>
+            <button class="saveBtn" onclick="alert('function not found !')">Save</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

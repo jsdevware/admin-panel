@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Board | Shop Admin</title>
+    <link rel="shortcut icon" href="img/fav.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/tasks.css">
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+                <!-- alert for log out start from here -->
+<div id="logout-alert-wrapper">
+    <div class="logout-alert">
+        <h4 class="mb-4">Are you sure you want to log out?</h4>
+        <button class="btn btn-danger me-4" onclick="document.querySelector('.logout-alert').classList.remove('logout-alert-show')">Cancel</button>
+        <button class="btn btn-success" onclick='window.location.replace("logout.html")'>Log Out</button>
+    </div>
+</div>
+                <!-- alert for log out end here -->
+
+<!-- page preloader -->
+<div id="preloader" class="preloader">
+    <img src="img/preloader.gif" alt="preloader">
+</div>
+
+                <!-- codes for menu section start from here -->
+<div class="menuBar">
+    <h4 class="menuCloseBtn bi bi-x-lg btn" onclick='document.querySelector(".menuBar").classList.remove("menuBarShow");'></h4>
+    <div class="menuBarLogo text-center"><a href="dashboard.html"><img src="img/logo.svg" alt="Logo" width="60%"></a></div>
+    <ul class="menu-items mt-4">
+        <li class="menu-link"><a href="dashboard.html"><i class="bi bi-command"></i> Dashboard</a></li>
+        <li class="menu-link"><a href="profile.html"><i class="bi bi-person"></i> Profile</a></li>
+        <li class="menu-link"><a href="settings.html"><i class="bi bi-gear"></i> Settings</a></li>
+        <li class="menu-link"><a href="chat.html"><i class="bi bi-chat-dots"></i> Chat</a></li>
+        <li class="menu-link"><a href="tasks.html" class="active"><i class="bi bi-sliders"></i> Tasks</a></li>
+        <li class="menu-link"><a href="faq.html"><i class="bi bi-info-circle"></i> Help</a></li>
+        <li class="menu-link"><a href="product-details.html"><i class="bi bi-truck"></i> Checkout</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-ui-checks"></i> Base UI</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-ui-checks-grid"></i> Advanced UI</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-columns"></i> Widgets</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-file-text"></i> Forms</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-grid-3x3"></i> Tables</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-card-text"></i> Charts</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-emoji-smile"></i> Icons</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-globe2"></i> Maps</a></li>
+        <li class="menu-link"><a href="#"><i class="bi bi-bar-chart"></i> Multi Level</a></li>
+        <li class="menu-link"><button onclick="document.querySelector('.logout-alert').classList.add('logout-alert-show')"><i class="bi bi-box-arrow-right"></i> Log Out</button></li>
+    </ul>
+</div>
+                <!-- codes for menu section end here -->
+
+<div class="bodyContent">
+
+                    <!-- codes for header section start from here -->
+<header id="header">
+    <div class="container">
+        <ul>
+            <li>
+                <button class="menuBtn menuHideBtn bi bi-arrow-left" onclick="menuHideFunction()"></button>
+                <button class="menuBtn menuShowBtn bi bi-list-nested" onclick='document.querySelector(".menuBar").classList.add("menuBarShow");'></button>
+                        <script>
+                            // script for hide menu
+                                function menuHideFunction(){
+                                    document.querySelector(".menuHideBtn").classList.toggle("bi-list-nested");
+                                    document.querySelector(".menuBar").classList.toggle("menuBarHide");
+                                    document.querySelector(".bodyContent").classList.toggle("bodyContentHide");
+                                };
+                        </script>
+            </li>
+            <li>
+                <form action="" class="mainSearch">
+                    <div class="item">
+                        <i class="bi bi-search"></i> <input type="search" name="search" id="search" placeholder="Search">
+                    </div>
+                </form>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <div class="searchBar">
+                    <div class="icon" onclick="document.querySelector('.searchBox').classList.toggle('searchBoxShow')"><i class="bi bi-search"></i></div>
+                    <div class="searchBox">
+                        <div class="box">
+                            <form action="">
+                                <i class="bi bi-search"></i> <input type="search" name="search" id="search" placeholder="Search...">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        <!-- codes for zooming the page-->
+            <li>
+                <div class="icon"> <i class="bi bi-fullscreen pageZoomIn" title="Zoom In Page" onclick="pageZoomIn()"></i> <i class="bi bi-fullscreen-exit pageZoomOut" title="Zoom Out Page" onclick="pageZoomOut()"></i></div>
+                        <script>
+                        //codes for page zooming
+                            var elem = document.documentElement;
+                            function pageZoomIn() {
+                            if (elem.requestFullscreen) {
+                                elem.requestFullscreen();
+                            } else if (elem.webkitRequestFullscreen) { 
+                                elem.webkitRequestFullscreen(); /* for Safari */
+                            } else if (elem.msRequestFullscreen) { 
+                                elem.msRequestFullscreen(); /* for Edge */
+                            }
+                            };
+
+                            function pageZoomOut() {
+                            if (document.exitFullscreen) {
+                                document.exitFullscreen();
+                            } else if (document.webkitExitFullscreen) { 
+                                document.webkitExitFullscreen(); /* for Safari */
+                            } else if (document.msExitFullscreen) { 
+                                document.msExitFullscreen(); /* for Edge */
+                            }
+                            };
+                        </script>
+            </li>
+        <!-- codes for cart wrapper -->
+            <li>
+                <div class="cart-wrapper position-relative">
+                    <div class="icon" title="My Cart" onclick="document.querySelector('.cart-box').classList.toggle('cart-box-show')"> <i class="bi bi-cart4"></i> <span>5</span></div>
+                    <div class="cart-box">
+                        <div class="topBar">
+                            <h5 class="p-3">
+                                <b>My cart</b>
+                                <span class="float-end fs-6 bg-warning rounded p-1">5 Items</span>
+                            </h5>
+                        </div>
+                        <div class="item-wrapper">
+                            <div class="single-item item1">
+                                <ul>
+                                    <li> <img src="img/tshirt-red.png" alt="t-shirt"> </li>
+                                    <li>
+                                        <a href="product-details.html">Branded T-Shirt</a> <br>
+                                        <span>Quantity : 10 x $32</span>
+                                    </li>
+                                    <li>$320 <i class="bi bi-x-lg ms-2" onclick="document.querySelector('.item1').classList.add('single-item-hide')"></i></li>
+                                </ul>
+                            </div>
+                            <div class="single-item item2">
+                                <ul>
+                                    <li> <img src="img/chair.png" alt="chair"> </li>
+                                    <li>
+                                        <a href="product-details.html">Bentwood Chair</a> <br>
+                                        <span>Quantity : 5 x $18</span>
+                                    </li>
+                                    <li>$90 <i class="bi bi-x-lg ms-2" onclick="document.querySelector('.item2').classList.add('single-item-hide')"></i></li>
+                                </ul>
+                            </div>
+                            <div class="single-item item3">
+                                <ul>
+                                    <li> <img src="img/helmet.png" alt="helmet"> </li>
+                                    <li>
+                                        <a href="product-details.html">Stillbird Helmet</a> <br>
+                                        <span>Quantity : 2 x $495</span>
+                                    </li>
+                                    <li>$990 <i class="bi bi-x-lg ms-2" onclick="document.querySelector('.item3').classList.add('single-item-hide')"></i></li>
+                                </ul>
+                            </div>
+                            <div class="single-item item4">
+                                <ul>
+                                    <li> <img src="img/paper-cup.png" alt="Cup"> </li>
+                                    <li>
+                                        <a href="product-details.html">Borosil Paper Cup</a> <br>
+                                        <span>Quantity : 3 x $250</span>
+                                    </li>
+                                    <li>$750 <i class="bi bi-x-lg ms-2" onclick="document.querySelector('.item4').classList.add('single-item-hide')"></i></li>
+                                </ul>
+                            </div>
+                            <div class="single-item item5">
+                                <ul>
+                                    <li> <img src="img/tshirt-gray.png" alt="t-shirt"> </li>
+                                    <li>
+                                        <a href="product-details.html">Gray T-Shirt</a> <br>
+                                        <span>Quantity : 1 x $147</span>
+                                    </li>
+                                    <li>$147 <i class="bi bi-x-lg ms-2" onclick="document.querySelector('.item5').classList.add('single-item-hide')"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="bottomBar">
+                            <h6 class="text-muted mb-3">Total : <span class="text-dark float-end">$3399.00</span></h6>
+                            <a href="#">Checkout</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        <!-- codes for notification wrapper-->
+            <li>
+                <div class="notification-wrapper position-relative">
+                    <div class="icon" title="Notifications" onclick="document.querySelector('.notification-box').classList.toggle('notification-box-show')"> <i class="bi bi-bell"></i> <span>9+</span></div>
+                    <div class="notification-box">
+                        <div class="topBar">
+                            <h5 class="p-3">
+                                <b>Notifications</b>
+                                <span class="float-end fs-6 bg-primary text-light rounded p-1">4 New</span>
+                            </h5>
+                            <ul class="tabs float-start">
+                                <li class="tab-link current" data-tab="tab-1">All (10)</li>
+                                <li class="tab-link" data-tab="tab-2">Messages (5)</li>
+                                <li class="tab-link" data-tab="tab-3">Alerts</li>
+                            </ul>
+                        </div>
+                        <div class="main">
+                        <!-- notifications -->
+                            <div id="tab-1" class="tab-content current">
+                                <div class="item">
+                                    <ul class="ul1">
+                                        <li><div> <i class="bi bi-browser-chrome"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> JUST 30 SEC AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul1').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul2">
+                                        <li><div> <i class="bi bi-browser-edge"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 48 MIN AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul2').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul3">
+                                        <li><div> <i class="bi bi-browser-firefox"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 2 HRS AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul3').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul4">
+                                        <li><div> <i class="bi bi-browser-safari"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 4 HRS AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul4').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul5">
+                                        <li><div> <i class="bi bi-browser-chrome"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> JUST 30 SEC AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul5').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul6">
+                                        <li><div> <i class="bi bi-browser-edge"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 48 MIN AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul6').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul7">
+                                        <li><div> <i class="bi bi-browser-firefox"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 2 HRS AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul7').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul8">
+                                        <li><div> <i class="bi bi-browser-safari"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 4 HRS AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul8').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul9">
+                                        <li><div> <i class="bi bi-browser-firefox"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 2 HRS AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul9').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul10">
+                                        <li><div> <i class="bi bi-browser-safari"></i> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 4 HRS AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul10').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="text-center py-3"><a href="#" class="btn btn-outline-success mt-4">View All Notifications <i class="bi bi-arrow-right"></i></a></div>
+                            </div>
+                        <!-- messages -->
+                            <div id="tab-2" class="tab-content">
+                                <div class="item">
+                                    <ul class="ul11">
+                                        <li><div> <img src="img/profile.jpg" alt="user"> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> JUST 30 SEC AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul11').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul12">
+                                        <li><div> <img src="img/user1.jpg" alt="user"> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> JUST 30 SEC AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul12').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul13">
+                                        <li><div> <img src="img/user2.jpg" alt="user"> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 48 MIN AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul13').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul14">
+                                        <li><div> <img src="img/user3.jpg" alt="user"> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 2 HRS AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul14').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <ul class="ul15">
+                                        <li><div> <img src="img/user4.jpg" alt="user"> </div></li>
+                                        <li>
+                                            <a href="#">Your Elite author Graphic Optimization reward is ready!</a> <br>
+                                            <span><i class="bi bi-clock"></i> 4 HRS AGO</span>
+                                        </li>
+                                        <li><input type="checkbox" name="checkbox" id="checkbox" onclick="document.querySelector('.ul15').classList.toggle('bg-changed')"></li>
+                                    </ul>
+                                </div>
+                                <div class="text-center py-3"><a href="#" class="btn btn-outline-success mt-4">View All Messages <i class="bi bi-arrow-right"></i></a></div>
+                            </div>
+                        <!-- alerts -->
+                            <div id="tab-3" class="tab-content text-center">
+                                <img src="img/bell.png" alt="bell" width="100px" class="my-5">
+                                <h4>Hey! You have no any alerts</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                    <script>
+                                    // codes for tab menu
+                                        $(document).ready(function(){
+                                            $('ul.tabs li').click(function(){
+                                                var tab_id = $(this).attr('data-tab');
+
+                                                $('ul.tabs li').removeClass('current');
+                                                $('.tab-content').removeClass('current');
+
+                                                $(this).addClass('current');
+                                                $("#"+tab_id).addClass('current');
+                                            })
+                                        })
+                                    </script>
+            </li>
+        <!-- codes for profile wrapper-->
+            <li>
+                <div class="profile-wrapper position-relative">
+                    <div class="button" onclick="document.querySelector('.profile-box').classList.toggle('profile-box-show')">
+                        <img src="img/profile.jpg" alt="Profile">
+                        <div class="name">
+                            <b>Anna Adame</b> <br>
+                            <span>Founder</span>
+                        </div>
+                    </div>
+                    <div class="profile-box">
+                        <h6 class="text-muted px-3">Welcome Anna!</h6>
+                        <ul>
+                            <li><a href="profile.html"><i class="bi bi-person-circle"></i> Profile</a></li>
+                            <li><a href="chat.html"><i class="bi bi-chat-left-dots"></i> Messages</a></li>
+                            <li><a href="tasks.html"><i class="bi bi-clipboard-check"></i> Taskboard</a></li>
+                            <li><a href="faq.html"><i class="bi bi-info-circle"></i> Help</a></li>
+                        </ul>
+                        <hr>
+                        <ul>
+                            <li><a href="profile.html"><i class="bi bi-cash-coin"></i> Balance : $5971.67</a></li>
+                            <li><a href="settings.html"><i class="bi bi-gear"></i> Settings <span class="float-end px-1 rounded bg-info">New</span></a></li>
+                            <li><a href="#"><i class="bi bi-lock"></i> Lock Screen</a></li>
+                            <li><button onclick="document.querySelector('.logout-alert').classList.add('logout-alert-show')"><i class="bi bi-box-arrow-right"></i> Log Out</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</header>
+                <!-- codes for header section end here -->
+
+                <!-- codes for main section start from here -->
+<main>
+<!-- page title  -->
+<div class="page-title">
+    <h6>TASK BOARD</h6>
+</div>
+<div class="container">
+    <div class="topBar">
+        <button onclick="document.querySelector('.new-board-wrapper').classList.add('new-board-show')">+ Create Board</button>
+        <ul class="search-wrapper">
+            <li><i class="bi bi-search"></i></li>
+            <li><input type="search" name="search-task" id="search-task" placeholder="Search for tasks..."></li>
+        </ul>
+    </div>
+                <!-- codes for task items start from here -->
+<div class="task-item-wrapper">
+    <!-- unassigned item -->
+    <div class="task-item">
+        <h6>
+            <b>UNASSIGNED</b>
+            <span class="badge bg-success">2</span>
+            <span class="float-end">
+                <select name="" id="">
+                    <option value="">Priority</option>
+                    <option value="">Date Added</option>
+                </select>
+            </span>
+        </h6>
+        <div class="card card1 my-2 p-3">
+            <h6 style="color: #ffb3cd; font-size: 15px; position: relative;">
+                <b>Profile Page Structure</b>
+                <span class="float-end bi bi-trash-fill text-muted btn p-0" onclick="document.querySelector('ul.delete-box-1').classList.toggle('delete-confirm-show')"></span>
+                <ul class="delete-confirm delete-box-1">
+                    <li onclick="document.querySelector('main .task-item-wrapper .task-item .card1').classList.add('delete')">Delete</li>
+                    <li onclick="document.querySelector('ul.delete-box-1').classList.remove('delete-confirm-show')">Cancel</li>
+                </ul>
+            </h6>
+            <p>Profile Page means a web page accessible to the public or to guests.</p>
+            <p><span class="bg-light px-2 rounded">Admin</span></p>
+            <p><span class="text-primary">15%</span> of 100% <span class="float-end">03 Jan, 2022</span></p>
+            <div class="progress" style="height: 3px;">
+                <div class="progress-bar" role="progressbar" style="width: 15%; background: hotpink;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <hr>
+            <p>#VL2436 <span class="float-end"><i class="bi bi-eye"></i> 14 <i class="bi bi-chat-left-dots ms-2"></i> 19 <i class="bi bi-link-45deg ms-2"></i> 02</span></p>
+        </div>
+        <div class="card card2 my-2 p-3">
+            <h6 style="color: #ffb3cd; font-size: 15px; position: relative;">
+                <b>UX/UI Layout Design</b>
+                <span class="float-end bi bi-trash-fill text-muted btn p-0" onclick="document.querySelector('ul.delete-box-2').classList.toggle('delete-confirm-show')"></span>
+                <ul class="delete-confirm delete-box-2">
+                    <li onclick="document.querySelector('main .task-item-wrapper .task-item .card2').classList.add('delete')">Delete</li>
+                    <li onclick="document.querySelector('ul.delete-box-2').classList.remove('delete-confirm-show')">Cancel</li>
+                </ul>
+            </h6>
+            <p>The dashboard is the front page of the Administration UI.</p>
+            <p>
+                <span class="bg-light px-2 rounded">Layout</span>
+                <span class="bg-light px-2 rounded">Admin</span>
+                <span class="bg-light px-2 rounded">Dashboard</span>
+            </p>
+            <hr>
+            <p><i class="bi bi-clock"></i> 07 Jan, 2022 <span class="float-end"><i class="bi bi-eye"></i> 08 <i class="bi bi-chat-left-dots ms-2"></i> 32 <i class="bi bi-link-45deg ms-2"></i> 05</span></p>
+        </div>
+        <button class="add-task" onclick="document.querySelector('.new-task-wrapper').classList.add('new-task-show')">Add New Task</button>
+    </div>
+    <!-- to do item -->
+    <div class="task-item">
+        <h6>
+            <b>TO DO</b>
+            <span class="badge bg-primary">2</span>
+            <span class="float-end">
+                <select name="" id="">
+                    <option value="">Priority</option>
+                    <option value="">Date Added</option>
+                </select>
+            </span>
+        </h6>
+        <div class="card card3 my-2 p-3">
+            <h6 style="color: #ffb3cd; font-size: 15px; position: relative;">
+                <b>Admin Layout Design</b>
+                <span class="float-end bi bi-trash-fill text-muted btn p-0" onclick="document.querySelector('ul.delete-box-3').classList.toggle('delete-confirm-show')"></span>
+                <ul class="delete-confirm delete-box-3">
+                    <li onclick="document.querySelector('main .task-item-wrapper .task-item .card3').classList.add('delete')">Delete</li>
+                    <li onclick="document.querySelector('ul.delete-box-3').classList.remove('delete-confirm-show')">Cancel</li>
+                </ul>
+            </h6>
+            <p>Landing page template with clean, minimal and modern design</p>
+            <p>
+                <span class="bg-light px-2 rounded">Design</span>
+                <span class="bg-light px-2 rounded">Website</span>
+            </p>
+            <hr>
+            <p><i class="bi bi-clock"></i> 07 Jan, 2022 <span class="float-end"><i class="bi bi-eye"></i> 13 <i class="bi bi-chat-left-dots ms-2"></i> 52 <i class="bi bi-link-45deg ms-2"></i> 17</span></p>
+        </div>
+        <div class="card card4 my-2 p-3">
+            <h6 style="color: #ffb3cd; font-size: 15px; position: relative;">
+                <b>Marketing and Sales</b>
+                <span class="float-end bi bi-trash-fill text-muted btn p-0" onclick="document.querySelector('ul.delete-box-4').classList.toggle('delete-confirm-show')"></span>
+                <ul class="delete-confirm delete-box-4">
+                    <li onclick="document.querySelector('main .task-item-wrapper .task-item .card4').classList.add('delete')">Delete</li>
+                    <li onclick="document.querySelector('ul.delete-box-4').classList.remove('delete-confirm-show')">Cancel</li>
+                </ul>
+            </h6>
+            <p>Sales and marketing are two business functions within an organization.</p>
+            <p>
+                <span class="bg-light px-2 rounded">Marketing</span>
+                <span class="bg-light px-2 rounded">Business</span>
+            </p>
+            <hr>
+            <p><i class="bi bi-clock"></i> 27 Dec, 2021 <span class="float-end"><i class="bi bi-eye"></i> 24 <i class="bi bi-chat-left-dots ms-2"></i> 10 <i class="bi bi-link-45deg ms-2"></i> 10</span></p>
+        </div>
+        <button class="add-task" onclick="document.querySelector('.new-task-wrapper').classList.add('new-task-show')">Add New Task</button>
+    </div>
+     <!-- inprogrss item -->
+     <div class="task-item">
+        <h6>
+            <b>INPROGRESS</b>
+            <span class="badge bg-warning">2</span>
+            <span class="float-end">
+                <select name="" id="">
+                    <option value="">Priority</option>
+                    <option value="">Date Added</option>
+                </select>
+            </span>
+        </h6>
+        <div class="card card5 my-2 p-3">
+            <h6 class="text-muted">#VL2457
+                <span class="float-end bi bi-trash-fill text-muted btn p-0" onclick="document.querySelector('ul.delete-box-5').classList.toggle('delete-confirm-show')"></span>
+                <ul class="delete-confirm delete-box-5">
+                    <li onclick="document.querySelector('main .task-item-wrapper .task-item .card5').classList.add('delete')">Delete</li>
+                    <li onclick="document.querySelector('ul.delete-box-5').classList.remove('delete-confirm-show')">Cancel</li>
+                </ul>
+            </h6>
+            <h6 style="color: #ffb3cd; font-size: 15px; position: relative;"><b>Brand Logo Design</b></h6>
+            <p>BrandCrowd's brand logo maker allows you to generate and customize stand-out brand logos in minutes.</p>
+            <p>
+                <span class="bg-light px-2 rounded">Logo</span>
+                <span class="bg-light px-2 rounded">Design</span>
+                <span class="bg-light px-2 rounded">UI/UX</span>
+            </p>
+            <hr>
+            <p><i class="bi bi-clock"></i> 22 Dec, 2021 <span class="float-end"><i class="bi bi-eye"></i> 24 <i class="bi bi-chat-left-dots ms-2"></i> 10 <i class="bi bi-link-45deg ms-2"></i> 10</span></p>
+        </div>
+        <div class="card card6 my-2 p-3">
+            <h6 class="text-muted">#VL2743
+                <span class="float-end bi bi-trash-fill text-muted btn p-0" onclick="document.querySelector('ul.delete-box-6').classList.toggle('delete-confirm-show')"></span>
+                <ul class="delete-confirm delete-box-6">
+                    <li onclick="document.querySelector('main .task-item-wrapper .task-item .card6').classList.add('delete')">Delete</li>
+                    <li onclick="document.querySelector('ul.delete-box-6').classList.remove('delete-confirm-show')">Cancel</li>
+                </ul>
+            </h6>
+            <h6 style="color: #ffb3cd; font-size: 15px; position: relative;"><b>Change Old App Icon</b></h6>
+            <p>Change app icons on Android: How do you change the look of your apps.</p>
+            <p>
+                <span class="bg-light px-2 rounded">App</span>
+                <span class="bg-light px-2 rounded">Android</span>
+            </p>
+            <hr>
+            <p><i class="bi bi-clock"></i> 24 Oct, 2021 <span class="float-end"><i class="bi bi-eye"></i> 64 <i class="bi bi-chat-left-dots ms-2"></i> 35 <i class="bi bi-link-45deg ms-2"></i> 23</span></p>
+        </div>
+        <button class="add-task" onclick="document.querySelector('.new-task-wrapper').classList.add('new-task-show')">Add New Task</button>
+    </div>
+     <!-- in reviews item -->
+     <div class="task-item">
+        <h6>
+            <b>IN REVIEWS</b>
+            <span class="badge bg-info">2</span>
+            <span class="float-end">
+                <select name="" id="">
+                    <option value="">Priority</option>
+                    <option value="">Date Added</option>
+                </select>
+            </span>
+        </h6>
+        <div class="card card7 my-2 p-3">
+            <h6 class="text-muted">#VL2453
+                <span class="float-end bi bi-trash-fill text-muted btn p-0" onclick="document.querySelector('ul.delete-box-7').classList.toggle('delete-confirm-show')"></span>
+                <ul class="delete-confirm delete-box-7">
+                    <li onclick="document.querySelector('main .task-item-wrapper .task-item .card7').classList.add('delete')">Delete</li>
+                    <li onclick="document.querySelector('ul.delete-box-7').classList.remove('delete-confirm-show')">Cancel</li>
+                </ul>
+            </h6>
+            <h6 style="color: #ffb3cd; font-size: 15px; position: relative;"><b>Create Product Animations</b></h6>
+            <img src="img/product-animation.gif" alt="animated product" width="100%">
+            <p>
+                <span class="bg-light px-2 rounded">Design</span>
+                <span class="bg-light px-2 rounded">3D</span>
+                <span class="bg-light px-2 rounded">e-Commerce</span>
+            </p>
+            <hr>
+            <p><i class="bi bi-clock"></i> 16 Nov, 2021 <span class="float-end"><i class="bi bi-eye"></i> 08 <i class="bi bi-chat-left-dots ms-2"></i> 54 <i class="bi bi-link-45deg ms-2"></i> 28</span></p>
+        </div>
+        <div class="card card8 my-2 p-3">
+            <h6 class="text-muted">#VL2340
+                <span class="float-end bi bi-trash-fill text-muted btn p-0" onclick="document.querySelector('ul.delete-box-8').classList.toggle('delete-confirm-show')"></span>
+                <ul class="delete-confirm delete-box-8">
+                    <li onclick="document.querySelector('main .task-item-wrapper .task-item .card8').classList.add('delete')">Delete</li>
+                    <li onclick="document.querySelector('ul.delete-box-8').classList.remove('delete-confirm-show')">Cancel</li>
+                </ul>
+            </h6>
+            <h6 style="color: #ffb3cd; font-size: 15px; position: relative;"><b>Product Features Analysis</b></h6>
+            <p>An essential part of strategic planning is running a product feature analysis.</p>
+            <p>
+                <span class="bg-light px-2 rounded">Product</span>
+                <span class="bg-light px-2 rounded">Analysis</span>
+            </p>
+            <hr>
+            <p><i class="bi bi-clock"></i> 05 Jan, 2022<span class="float-end"><i class="bi bi-eye"></i> 14 <i class="bi bi-chat-left-dots ms-2"></i> 31 <i class="bi bi-link-45deg ms-2"></i> 07</span></p>
+        </div>
+        <button class="add-task" onclick="document.querySelector('.new-task-wrapper').classList.add('new-task-show')">Add New Task</button>
+    </div>
+     <!-- completed item -->
+     <div class="task-item">
+        <h6>
+            <b>COMPLETED</b>
+            <span class="badge bg-secondary">1</span>
+            <span class="float-end">
+                <select name="" id="">
+                    <option value="">Priority</option>
+                    <option value="">Date Added</option>
+                </select>
+            </span>
+        </h6>
+        <div class="card card9 my-2 p-3">
+            <h6 style="color: #ffb3cd; font-size: 15px; position: relative;">
+                <b>Create a Blog Template UI</b>
+                <span class="float-end bi bi-trash-fill text-muted btn p-0" onclick="document.querySelector('ul.delete-box-9').classList.toggle('delete-confirm-show')"></span>
+                <ul class="delete-confirm delete-box-9">
+                    <li onclick="document.querySelector('main .task-item-wrapper .task-item .card9').classList.add('delete')">Delete</li>
+                    <li onclick="document.querySelector('ul.delete-box-9').classList.remove('delete-confirm-show')">Cancel</li>
+                </ul>
+            </h6>
+            <p>Landing page template with clean, minimal and modern design.</p>
+            <p>
+                <span class="bg-light px-2 rounded">Design</span>
+                <span class="bg-light px-2 rounded">UI/UX</span>
+                <span class="bg-light px-2 rounded">Website</span>
+            </p>
+            <p><span class="text-primary">35%</span> of 100% <span class="float-end">3 Days</span></p>
+            <div class="progress" style="height: 3px;">
+                <div class="progress-bar" role="progressbar" style="width: 35%; background: hotpink;" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <hr>
+            <p>#VL2451 <span class="float-end"><i class="bi bi-eye"></i> 24 <i class="bi bi-chat-left-dots ms-2"></i> 10 <i class="bi bi-link-45deg ms-2"></i> 08</span></p>
+        </div>
+        <button class="add-task" onclick="document.querySelector('.new-task-wrapper').classList.add('new-task-show')">Add New Task</button>
+    </div>
+    <!-- new item -->
+    <div class="task-item">
+        <h6>
+            <b>NEW</b>
+            <span class="badge bg-success">1</span>
+            <span class="float-end">
+                <select name="" id="">
+                    <option value="">Priority</option>
+                    <option value="">Date Added</option>
+                </select>
+            </span>
+        </h6>
+        <div class="card card10 my-2 p-3">
+            <h6 class="text-muted">#VL5287
+                <span class="float-end bi bi-trash-fill text-muted btn p-0" onclick="document.querySelector('ul.delete-box-10').classList.toggle('delete-confirm-show')"></span>
+                <ul class="delete-confirm delete-box-10">
+                    <li onclick="document.querySelector('main .task-item-wrapper .task-item .card10').classList.add('delete')">Delete</li>
+                    <li onclick="document.querySelector('ul.delete-box-10').classList.remove('delete-confirm-show')">Cancel</li>
+                </ul>
+            </h6>
+            <h6 style="color: #ffb3cd; font-size: 15px; position: relative;"><b>Banner Design for FB & Twitter</b></h6>
+            <img src="img/fb-banner.jpg" alt="banner" width="100%">
+            <p>
+                <span class="bg-light px-2 rounded">UI/UX</span>
+                <span class="bg-light px-2 rounded">Graphic</span>
+            </p>
+            <hr>
+            <p><i class="bi bi-clock"></i> 03 Feb, 2022 <span class="float-end"><i class="bi bi-eye"></i> 11 <i class="bi bi-chat-left-dots ms-2"></i> 26 <i class="bi bi-link-45deg ms-2"></i> 30</span></p>
+        </div>
+        <button class="add-task" onclick="document.querySelector('.new-task-wrapper').classList.add('new-task-show')">Add New Task</button>
+    </div>
+</div>
+                <!-- codes for task items end here -->
+</div> <!-- container end -->
+</main>
+                <!-- codes for main section end here -->
+
+<!-- codes for footer section -->
+<footer>
+    <div class="container">
+        <div class="row px-3 text-center text-muted">
+            <div class="col-md-6 text-sm-start"><h6>2022 <i class="bi bi-c-circle"></i> Shop</h6></div>
+            <div class="col-md-6 text-sm-end">
+                <h6>Design & Develop by - <a href="https://www.facebook.com/shahin.alam.j" title="About Shahin" target="_blank"><b>Shahin Alam</b></a></h6>
+            </div>
+        </div>
+    </div>
+</footer>
+</div><!-- body content end here -->
+
+    <!-- new board adding -->
+<div class="new-board-wrapper">
+    <div class="new-board">
+        <h6><b>Create Board</b> <span class="float-end btn p-0 bi bi-x-lg" onclick="document.querySelector('.new-board-wrapper').classList.remove('new-board-show')"></span></h6>
+        <div class="body">
+            <label for="board-name"><b>Board Name</b></label>   <br>
+            <input type="text" placeholder="Enter board name">
+            <div class="float-end">
+                <button onclick="document.querySelector('.new-board-wrapper').classList.remove('new-board-show')">Close</button>
+                <button onclick="alert('function not found !')">Add Board</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- new task adding -->
+<div class="new-task-wrapper">
+    <div class="new-task">
+        <h6><b>Create Task</b> <span class="float-end btn p-0 bi bi-x-lg" onclick="document.querySelector('.new-task-wrapper').classList.remove('new-task-show')"></span></h6>
+        <div class="body">
+            <div class="input-box my-2">
+                <label for="project-name"><b>Project Name</b></label>   <br>
+                <input type="text" placeholder="Enter project name">
+            </div>
+            <div class="input-box my-2">
+                <label for="task-title"><b>Task Title</b></label>   <br>
+                <input type="text" placeholder="Enter a title">
+            </div>
+            <div class="input-box my-2">
+                <label for="task-desc"><b>Task Description</b></label>   <br>
+                <textarea name="task-desc" id="task-desc" rows="4" placeholder="Write something here..."></textarea>
+            </div>
+            <div class="input-box my-2">
+                <label for="task-img"><b>Task Images</b></label>   <br>
+                <input type="file" multiple>
+            </div>
+            <div class="bottomBar row">
+                <div class="input-box col-md-4 my-2">
+                    <label for="due-date"><b>Due Date</b></label> <br>
+                    <input type="text" placeholder="Select Date" onclick="this.type = 'date'" onblur="this.type = 'text'" >
+                </div>
+                <div class="input-box col-md-4 my-2">
+                    <label for="tags"><b>Tags</b></label> <br>
+                    <input type="text" placeholder="Enter tag">
+                </div>
+                <div class="input-box col-md-4 my-2">
+                    <label for="task-progress"><b>Task Progress</b></label> <br>
+                    <input type="text" placeholder="Enter progress">
+                </div>
+            </div>
+            <div class="float-end">
+                <button onclick="document.querySelector('.new-task-wrapper').classList.remove('new-task-show')">Close</button>
+                <button onclick="alert('function not found !')">Add Task</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
