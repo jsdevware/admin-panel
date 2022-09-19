@@ -172,6 +172,25 @@
                     </div>
                 </div>
             </div>
+                        <script>
+                            $(document).ready(function(){
+                        
+                            $(".submit-btn button").click(function(){
+                            let message = $("#input").val();
+                            
+                                if (message == "") {
+                                alert("No empty messages please!");
+                                }
+                                else {
+                                var item = document.createElement('li');
+                                item.textContent = message;
+                                $( "ul#messages" ).append(item);
+                                $('#input').val('');
+                                }
+                            });
+                            
+                            });
+                        </script>
         </div>
     <!-- profile -->
         <div class="chat-profile-wrapper">
@@ -206,30 +225,3 @@
 
 </body>
 </html>
-
-
-
-<script>
-    $(document).ready(function(){
-  
-  $(".submit-btn button").click(function(){
-   let message = $("#input").val();
-   
-    if (message == "") {
-      alert("No empty messages please!");
-    }
-    else {
-      var item = document.createElement('li');
-      item.textContent = message;
-      $( "ul#messages" ).append(item);
-      $('#input').val('');
-    }
-   });
-
- });
-
-</script>
-
-
-
-
